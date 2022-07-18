@@ -160,10 +160,12 @@ YearVisit = rep(YearVisit, times = length(unique(PRFA2022_Data$TerritoryName)))
 TerritoryRep$YearVisit = YearVisit
 
 # left_join so that the final df has the same number of rows per territory per year
-PRFA2022_Data_append = left_join(TerritoryRep,PRFA2022_Data, by = c("TerritoryName","YearVisit","Area_Type"))
+PRFA2022_Data_append = left_join(TerritoryRep,PRFA2022_Data, by = c("TerritoryName","YearVisit","Area_Type")) %>% 
+  mutate(BreedingYear = substr(YearVisit, 1,4),
+         Visit = substr(YearVisit, 5,7)) 
 
 # check percentage of NA's
-sum(is.na(PRFA2022_Data_append$finalState))/nrow(PRFA2022_Data_append) # %63 with triweekly bins; %76.5 with unpooled data
+sum(is.na(PRFA2022_Data_append$finalState))/nrow(PRFA2022_Data_append) # %69 with unpooled data
 
 
 ### Create detection hist df -------
@@ -174,5 +176,14 @@ PRFADetectHistory_2022<-PRFA2022_Data_append %>%
   spread("YearVisit", "finalState", NA)%>%
   arrange(TerritoryName, Area_Type)
 
+### Create STACKED detection hist df -------
+PRFADetectHistory_2022_stacked <- PRFA2022_Data_append %>%
+  #Drop columns no longer needed
+  select(TerritoryName, Area_Type, BreedingYear, Visit, finalState)%>%
+  pivot_wider(names_from = Visit, values_from = finalState) %>% 
+  unite("Site_Year", c(TerritoryName, BreedingYear))
+  
+
 #Export Detection history to excel
 write_csv(PRFADetectHistory_2022, path = "PRFADetectHistory_2022.csv", append= FALSE)
+write_csv(PRFADetectHistory_2022_stacked, path = "PRFADetectHistory_2022_stacked.csv", append= FALSE)

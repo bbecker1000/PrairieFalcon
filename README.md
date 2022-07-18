@@ -5,15 +5,22 @@ Summer 2022 - UC Berkeley - Pinnacles National Park Prairie Falcon Occupancy Mod
 
 
 Code files:
-- InitialCleaning.R: code takes 2022 Raptor Observations dataset, conducts initial filtering & cleaning, and adds necessary columns for subsequent analysis and graphing.
+- Part1_InitialCleaning.R: code takes 2022 Raptor Observations dataset, conducts initial filtering & cleaning, and adds necessary columns for subsequent analysis and graphing.
 
-- DatasetPrep.R: code prepares PEFA dataset and PRFA dectection history dataset for subsequent analysis, visuaization and modeling.
+- Part2_DatasetPrep.R: code prepares PEFA dataset and PRFA dectection history dataset for subsequent analysis, visuaization and modeling.
 
-- EDAandVisualization.R: code conducts exploratory data analysis and visualization.
+- Part3_EDAandVisualization.R: code conducts exploratory data analysis and visualization.
 
-- FitModels.R: code runs Dynamic Multi-State Models with Unmarked.
+- Part4_GetWeatherData.R: Code prepares weather data for modeling as covariates
 
-- GetWeatherData.R: code prepares weather data as covariates for modeling.
+- Part5_CreatUMF.R:
+    a: Code prepares STACKED Unmarked Frame for modeling
+    b: Code prepares unstacked Unmarked Frame for modeling
+    
+- Part6_FitModels.R:
+    a: Code builds and runs Static Multi-State Models with stacked data with Unmarked
+    b: Code builds and runs Dynamic Multi-State Models with unstacked data with Unmarked
+
 
 
 Data files:
