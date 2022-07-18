@@ -4,8 +4,8 @@
 ## Libraries and versions used: unmarked
 #####################################################################################################
 
-source("Code/DatasetPrep.R")
-source("Code/GetWeatherData.R")
+source("Code/Part2_DatasetPrep.R")
+source("Code/Part4_GetWeatherData.R")
 library(unmarked)
 
 ### Get basic STACKED model parameters ---------

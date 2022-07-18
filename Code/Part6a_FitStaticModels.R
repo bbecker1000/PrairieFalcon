@@ -4,7 +4,7 @@
 ## Libraries and versions used: unmarked
 #####################################################################################################
 
-source("Code/CreateStackedUMF.R")
+source("Code/Part5a_CreateStackedUMF.R")
 library(unmarked)
 
 ###### Static Multi-State Modeling with Unmarked #######

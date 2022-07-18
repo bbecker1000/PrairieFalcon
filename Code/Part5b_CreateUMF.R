@@ -4,8 +4,8 @@
 ## Libraries and versions used: unmarked
 #####################################################################################################
 
-source("Code/DatasetPrep.R")
-source("Code/GetWeatherData.R")
+source("Code/Part2_DatasetPrep.R")
+source("Code/Part4_GetWeatherData.R")
 library(unmarked)
 
 
@@ -52,7 +52,7 @@ extreme_events_data = rep(PINN_extreme_events$ExtremeEvent, time = num_Site)
 yearly_site_cov_df = data.frame(PEFA = as.factor(PEFA_data),
                                 DecToFebTotal = scale(DecToFebTotal_data),
                                 AnnualVisitors= scale(annual_visitors_data),
-                                ExtremeEvents = extreme_events_data)
+                                ExtremeEvents = as.factor(extreme_events_data))
 
 
 ## OBSERVATION Covariates - ordered by site-primary period-observatio ---------------
