@@ -45,9 +45,6 @@ mod00_stacked_det_predict = predict(mod00_stacked_fit,type='det') # est. for p1,
 
 
 
-
-
-
 ############ mod00a_stacked ########### 
 ### Set Formulas 
 # State Params
@@ -272,4 +269,8 @@ mod04b_stacked_det_predict = predict(mod04b_stacked_fit,type='det') # est. for p
 
 ### TODO: Compare Fit -------------
 # Example: modSel(fitList(fit,fit_null))
-
+# fl <- fitList("00"= mod00_stacked_fit, "00a" = mod00a_stacked_fit)
+# fl
+# ms <- modSel(fl)
+# ms
+# posteriorSamples()

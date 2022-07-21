@@ -185,5 +185,5 @@ PRFADetectHistory_2022_stacked <- PRFA2022_Data_append %>%
   
 
 #Export Detection history to excel
-write_csv(PRFADetectHistory_2022, path = "PRFADetectHistory_2022.csv", append= FALSE)
-write_csv(PRFADetectHistory_2022_stacked, path = "PRFADetectHistory_2022_stacked.csv", append= FALSE)
+write_csv(PRFADetectHistory_2022, path = "Data/PRFADetectHistory_2022.csv", append= FALSE)
+write_csv(PRFADetectHistory_2022_stacked, path = "Data/PRFADetectHistory_2022_stacked.csv", append= FALSE)

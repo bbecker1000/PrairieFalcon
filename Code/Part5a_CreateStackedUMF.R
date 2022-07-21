@@ -5,14 +5,13 @@
 #####################################################################################################
 
 source("Code/Part2_DatasetPrep.R")
-source("Code/Part4_GetWeatherData.R")
+source("Code/Part4_GetCovData.R")
 library(unmarked)
 
 ### Get basic STACKED model parameters ---------
 # Use PRFAStates_2022 to calculate the following because PRFA2022_Data_append has NA's
 num_Year = max(PRFA2022_Data$BreedingYear) - min(PRFA2022_Data$BreedingYear) + 1 #15
 num_Site = length(unique(PRFA2022_Data$TerritoryName)) #43
-
 num_Row_stacked = num_Site*num_Year #645
 num_Rep = max(PRFA2022_Data$Visit)  # max number of visits within each year
 # c(num_Year,num_Site,num_Rep) #test
@@ -20,7 +19,7 @@ num_Rep = max(PRFA2022_Data$Visit)  # max number of visits within each year
 
 ### Format STACKED Covariate Data 
 
-## SITE Covariates ------------  645 rows
+## SITE Covariates (645 rows) ------------  
 
 # Breeding Year - integer
 BreedingYear_data_stacked = rep(c(2007:2021), time = num_Site)
@@ -44,18 +43,24 @@ DecToFebTotal_data = rep(DecToFebTotal$Total, time = num_Site)
 
 # Annual Visitors - numeric
 annual_visitors_data = rep(annual_visitors$RecreationVisitors, time = num_Site)
+# hist(annual_visitors_data)
+# Heat Degree Days - numeric
+HDD_data = rep(HDD$YearlyHDD, time = num_Site)
 
-# Extreme Events - factor 0/1
-extreme_events_data = rep(PINN_extreme_events$ExtremeEvent, time = num_Site)
+# Nestling Period Hot Days - numeric
+HotDays_data = rep(HotDays$n, time = num_Site)
 
+# Short drought?
+# Long drought?
 
 # create df
 site_cov_df_stacked = data.frame(BreedingYear = BreedingYear_data_stacked - 2006,
                                  AreaType = AreaTypeCovs_stacked$Area_Type,
                                  PEFA = as.factor(PEFACovs$PEFA),
                                  DecToFebPrecipitation = scale(DecToFebTotal_data),
-                                 AnnualVisitors= scale(annual_visitors_data),
-                                 ExtremeEvents = as.factor(extreme_events_data))
+                                 AnnualVisitors= scale(log(annual_visitors_data)),
+                                 HDD = scale(HDD_data),
+                                 HotDays = scale(HotDays_data))
 
 
 ## OBSERVATION Covariates - ordered by site-observation (territory-year-obs) ---------------

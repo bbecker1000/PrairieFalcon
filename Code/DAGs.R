@@ -8,7 +8,7 @@ library(dagitty)
 
 # AreaType (0/1)
 # Park Visitor Number (cont)
-# PEFA (o/1)
+# PEFA (0/1)
 # Extreme Events (0/1)
 # Dec-Feb Total Precipitation (cont)
 # short-term drought blend
