@@ -266,6 +266,53 @@ mod04b_stacked_det_predict = predict(mod04b_stacked_fit,type='det') # est. for p
 
 
 
+############ mod05a_stacked ########### 
+### Set Formulas 
+# State Params
+mod05a_stacked_psiformulas <- c('~BreedingYear+ExtremeEvents','~BreedingYear') #siteCovs on psi[1] and psi[2]
+
+# Detection probability
+mod05a_stacked_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p1, p2 and delta 
+
+
+### Fit Model 
+mod05a_stacked_fit <- occuMS(detformulas=mod05a_stacked_detformulas, 
+                             psiformulas=mod05a_stacked_psiformulas,
+                             data=umf_stacked, parameterization = "condbinom")
+mod05a_stacked_fit
+#coef(mod05a_stacked_fit)
+
+### Get predicted parameter values using predict() 
+# See Agenda 06-27 ToDO #3 for detailed descriptions
+mod05a_stacked_psi_predict = predict(mod05a_stacked_fit, type = "psi") # est. for psi1 and psi2 (i.e. R)
+mod05a_stacked_det_predict = predict(mod05a_stacked_fit,type='det') # est. for p1, p2, delta
+#lapply(mod04a_stacked_phi_predict,head)
+
+
+
+
+############ mod05b_stacked ########### 
+### Set Formulas 
+# State Params
+mod05b_stacked_psiformulas <- c('~BreedingYear','~BreedingYear+ExtremeEvents') #siteCovs on psi[1] and psi[2]
+
+# Detection probability
+mod05b_stacked_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p1, p2 and delta 
+
+
+### Fit Model 
+mod05b_stacked_fit <- occuMS(detformulas=mod05b_stacked_detformulas, 
+                             psiformulas=mod05b_stacked_psiformulas,
+                             data=umf_stacked, parameterization = "condbinom")
+mod05b_stacked_fit
+#coef(mod04b_stacked_fit)
+
+### Get predicted parameter values using predict() 
+# See Agenda 06-27 ToDO #3 for detailed descriptions
+mod05b_stacked_psi_predict = predict(mod05b_stacked_fit, type = "psi") # est. for psi1 and psi2 (i.e. R)
+mod05b_stacked_det_predict = predict(mod05b_stacked_fit,type='det') # est. for p1, p2, delta
+#lapply(mod04b_stacked_phi_predict,head)
+
 
 
 

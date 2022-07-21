@@ -42,6 +42,9 @@ PEFACovs["PEFA"] <- sapply(PEFACovs["PEFA"],as.factor)
 # same for all site in each year (vector has the same value every 15 elements)
 DecToFebTotal_data = rep(DecToFebTotal$Total, time = num_Site)
 
+##Num days heavy rainfall (>8mm/day) during breeding season (03/15-06/15)
+days_heavy_rainfall_data = rep(days_heavy_rainfall$daysHeavyRainfall, time=num_Site)
+
 # Annual Visitors - numeric
 annual_visitors_data = rep(annual_visitors$RecreationVisitors, time = num_Site)
 

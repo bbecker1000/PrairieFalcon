@@ -119,6 +119,55 @@ PINN_extreme_events <- left_join(years, PINN_extreme_events) %>%
   mutate(n = coalesce(n,0),
          ExtremeEvent = coalesce(ExtremeEvent,0))
 
+#Daily precipitation data
+daily_precipitation <- read.csv("Data/PINN_Daily_Precipitation.csv")
+names(daily_precipitation) <- c('datetime', 'precip_mm')
+daily_precipitation$datetime <- as.Date(daily_precipitation$datetime)
+daily_precipitation <- daily_precipitation %>% 
+  mutate(Year = year(daily_precipitation$datetime),
+         Month = month(daily_precipitation$datetime),
+         Day = day(daily_precipitation$datetime),
+         BreedingYear = ifelse(Month > 11, Year+1, Year)) %>%
+  filter(BreedingYear > 2006 & BreedingYear < 2022)
+  
+#Daily precipitation during breeding season (03/15-06/15)
+daily_precip_breed_szn <- daily_precipitation %>%
+  filter((Month > 2 & Day >= 15) | (Month < 7 & Day <= 15))
+  
+#Num days heavy rainfall (>8mm/day) during breeding season (03/15-06/15)
+days_heavy_rainfall = daily_precip_breed_szn %>% 
+  group_by(BreedingYear) %>% 
+  summarise(daysHeavyRainfall = sum(precip_mm > 8.0))
+
 ### Plots
+#Daily Precipitation time series
+ggplot(daily_precipitation, aes(x=datetime, y=precip_mm)) + 
+  geom_line(size=0.25) +
+  geom_hline(yintercept=8, color='red',linetype="dashed") +
+  geom_text(aes(as.Date('2007-03-01'),22,label = '8 mm', color='red',vjust = 1.5)) +
+  ylim(0,95) +
+  xlab('Date') +
+  ylab('Rainfall (mm)') +
+  labs(title='Pinnacles Daily Precipitation', hjust=0.5) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 12,hjust = 0.5),
+    axis.title.x = element_text(size = 10),
+    axis.title.y = element_text(size = 10),
+    legend.position = "none")
 
-
+#Daily Precipitation during breeding season (03/15-06/15) time series
+ggplot(daily_precip_breed_szn, aes(x=datetime, y=precip_mm)) + 
+  geom_line(size=0.25) +
+  geom_hline(yintercept=8, color='red',linetype="dashed") +
+  geom_text(aes(as.Date('2007-03-01'),22,label = '8 mm', color='red',vjust = 1.5)) +
+  ylim(0,95) +
+  xlab('Date') +
+  ylab('Rainfall (mm)') +
+  labs(title='Pinnacles Daily Precipitation during Breeding Season', hjust=0.5) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 12,hjust = 0.5),
+    axis.title.x = element_text(size = 10),
+    axis.title.y = element_text(size = 10),
+    legend.position = "none")
