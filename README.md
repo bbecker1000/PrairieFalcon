@@ -11,15 +11,20 @@ Code files:
 
 - Part3_EDAandVisualization.R: code conducts exploratory data analysis and visualization.
 
-- Part4_GetWeatherData.R: Code prepares weather data for modeling as covariates
+- Part4_GetWeatherData.R: Code prepares weather data for modeling as covariates.
 
 - Part5_CreatUMF.R:
-    a: Code prepares STACKED Unmarked Frame for modeling
-    b: Code prepares unstacked Unmarked Frame for modeling
+    a: Code prepares STACKED Unmarked Frame for modeling.
+    b: Code prepares unstacked Unmarked Frame for modeling.
     
 - Part6_FitModels.R:
-    a: Code builds and runs Static Multi-State Models with stacked data with Unmarked
-    b: Code builds and runs Dynamic Multi-State Models with unstacked data with Unmarked
+    a: Code builds and runs Static Multi-State Models with stacked data with Unmarked.
+    b: Code builds and runs Dynamic Multi-State Models with unstacked data with Unmarked.
+    c: Code builds and runs BIG Static Multi-State Models with stacked data with Unmarked.
+    d: Code builds and runs Big Dynamic Multi-State Models with unstacked data with Unmarked.
+    
+- Part7_ParamVisualization.R: Code visualizes predicted parameter values.
+
 
 
 

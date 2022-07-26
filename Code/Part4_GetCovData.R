@@ -69,7 +69,7 @@ daily_min_temp <- daily_min_temp %>%
 # Dependent variable: R
 # Measurement variable: Heating degree day (HDD) - the difference between the daily temperature mean and 65°F. HDD = sum(65 - daily mean temp)
 
-# HDD
+# HDD -numeric
 HDD <- daily_mean_temp %>% 
   filter(Season == 1) %>% 
   mutate(hdd = 65 - MeanTemp) %>% 
@@ -83,11 +83,11 @@ HDD <- daily_mean_temp %>%
 #   count()
 # cor(WinterColdDays$n, HDD$YearlyHDD)
 
-
 ## Plot: dashed line - 15-year winter average temp
 ggplot(daily_mean_temp, aes(x=Date, y=MeanTemp, color = as.factor(Season))) +
   geom_point(size=1)+
   geom_hline(yintercept= 65, linetype="dotdash", color = "black")+
+  geom_text(aes(as.Date('2006-12-01'),68,label = '65 degree F',vjust = 1.5), color='red')+
   scale_x_date(breaks = scales::breaks_pretty(15))+
   scale_y_continuous(n.breaks = 8)+
   scale_color_manual(values = c("1"= "blue", "2" = "pink", "3" = "orange", "0" = "darkgrey"))+
@@ -104,7 +104,7 @@ ggplot(daily_mean_temp, aes(x=Date, y=MeanTemp, color = as.factor(Season))) +
     axis.title.y = element_text(size = 12),
     legend.position = "none") 
 
-### NESTLING PERIOD (April 15th - June 15th)
+### NESTLING PERIOD Hot Days (April 15th - June 15th)  -numeric
 # Dependent variable: R
 # Measurement variable: number of days during nestling period per year exceeding 90 degree F
 HotDays <- daily_max_temp %>% 
@@ -117,6 +117,7 @@ ggplot(daily_max_temp, aes(x=Date, y=MaxTemp, color = as.factor(Season))) +
   geom_point(size=1)+
   scale_x_date(breaks = scales::breaks_pretty(15))+
   geom_hline(yintercept= 90, linetype="dotdash", color = "black")+
+  geom_text(aes(as.Date('2006-12-01'),93,label = '65 degree F',vjust = 1.5), color = "red")+
   scale_y_continuous(n.breaks = 8)+
   scale_color_manual(values = c("1"= "blue", "2" = "pink", "3" = "orange", "0" = "darkgrey"))+
   labs(
@@ -132,6 +133,7 @@ ggplot(daily_max_temp, aes(x=Date, y=MaxTemp, color = as.factor(Season))) +
     axis.title.y = element_text(size = 12),
     legend.position = "none") 
 
+### NESTLING PERIOD Cold Days (April 15th - June 15th)  -numeric
 ColdDays <- daily_min_temp %>% 
   filter(Season == 4) %>% 
   filter(MinTemp <=35)%>% 
@@ -144,6 +146,7 @@ ColdDays <- left_join(data.frame(BreedingYear = c(2007:2021)), ColdDays) %>%
 ggplot(daily_min_temp, aes(x=Date, y=MinTemp, color = as.factor(Season))) +
   geom_point(size=1)+
   geom_hline(yintercept= 35, linetype="dotdash", color = "black")+
+  geom_text(aes(as.Date('2006-12-01'),38,label = '65 degree F',vjust = 1.5), color='red')+
   scale_x_date(breaks = scales::breaks_pretty(15))+
   scale_y_continuous(n.breaks = 8)+
   scale_color_manual(values = c("1"= "blue", "4" = "darkgreen", "0" = "darkgrey"))+
@@ -158,30 +161,11 @@ ggplot(daily_min_temp, aes(x=Date, y=MinTemp, color = as.factor(Season))) +
     plot.subtitle = element_text(size = 12, hjust = 0.5), 
     axis.title.x = element_text(size = 12),
     axis.title.y = element_text(size = 12),
-    legend.position = "none") 
-
-cor(HDD$YearlyHDD, HotDays$n) # -0.15
-cor(HDD$YearlyHDD, ColdDays$n) # 0.64 --- Remove ColdDays
-cor(HotDays$n, ColdDays$n) # -0.27
-
-
-
-
-##### Monthly Precipitation #####
-monthly_precipitation = read.csv("Data/PINN_monthly_precipitation.csv", skip = 9) %>% select(-4)
-monthly_precipitation$DATE_TIME <- mdy_hms(monthly_precipitation$DATE_TIME) 
-monthly_precipitation <- monthly_precipitation %>% 
-  mutate(Year = year(DATE_TIME),
-         Month = month(DATE_TIME),
-         BreedingYear = ifelse(Month > 11, Year+1, Year))
-DecToFebTotal = monthly_precipitation %>% 
-  filter(Month > 11 | Month < 3)%>% 
-  filter(BreedingYear > 2006 & BreedingYear < 2022) %>% 
-  group_by(BreedingYear) %>% 
-  summarise(Total = sum(RNF_MM))
+    legend.position = "none")
  
 
-##### Annual Visitors #####
+##### Annual Visitors ##### 
+# numeric
 annual_visitors = read.csv("Data/PINN_Annual_Visitors.csv", skip=2) %>% 
   filter(Year >=2007) %>% 
   select(-3) %>% 
@@ -190,6 +174,7 @@ annual_visitors = read.csv("Data/PINN_Annual_Visitors.csv", skip=2) %>%
 # hist(log(annual_visitors$RecreationVisitors))
 
 ##### Short term drought #####
+# numeric
 short_term_drought = read.csv("Data/ShortTermDrought.csv") 
 colnames(short_term_drought) = c("Date", "Data")
 
@@ -200,9 +185,14 @@ monthly_short_drought = short_term_drought %>%
          BreedingYear = ifelse(Month > 11, Year+1, Year)) %>% 
   group_by(BreedingYear, Month) %>% 
   summarise(Data = mean(Data))
-
+# Avg Dec-Feb
+ShortDroughtAvgDecToFeb <- monthly_short_drought %>% 
+  filter(Month %in% c(12,1:2)) %>% 
+  group_by(BreedingYear) %>% 
+  summarise(avg = mean(Data))
 
 ##### Long term drought #####
+# numeric
 long_term_drought = read.csv("Data/longTermDrought.csv") 
 colnames(long_term_drought) = c("Date", "Data")
 
@@ -214,9 +204,72 @@ monthly_long_drought =long_term_drought %>%
   group_by(BreedingYear, Month) %>% 
   summarise(Data = mean(Data))
 
+# Yearly Avg
+LongDroughtYearlyAverage <- monthly_long_drought %>%
+  group_by(BreedingYear) %>% 
+  summarise(avg = mean(Data))
 
+##### Daily precipitation data ##### 
+# numeric
+daily_precipitation <- read.csv("Data/PINN_Daily_Precipitation.csv")
+names(daily_precipitation) <- c('datetime', 'precip_mm')
+daily_precipitation$datetime <- as.Date(daily_precipitation$datetime)
+daily_precipitation <- daily_precipitation %>% 
+  mutate(Year = year(daily_precipitation$datetime),
+         Month = month(daily_precipitation$datetime),
+         Day = day(daily_precipitation$datetime),
+         BreedingYear = ifelse(Month > 11, Year+1, Year)) %>%
+  filter(BreedingYear > 2006 & BreedingYear < 2022)
 
-### Test correlations --------
+# Total Precipiation Dec-Feb
+DecToFebTotal = daily_precipitation %>% 
+  filter(Month > 11 | Month < 3)%>% 
+  filter(BreedingYear > 2006 & BreedingYear < 2022) %>% 
+  group_by(BreedingYear) %>% 
+  summarise(Total = sum(precip_mm))
+
+#Daily precipitation during breeding season (03/15-06/15)
+daily_precip_breed_szn <- daily_precipitation %>%
+  filter((Month > 2 & Day >= 15) | (Month < 7 & Day <= 15))
+
+#Num days heavy rainfall (>8mm/day) during breeding season (03/15-06/15)
+days_heavy_rainfall = daily_precip_breed_szn %>% 
+  group_by(BreedingYear) %>% 
+  summarise(daysHeavyRainfall = sum(precip_mm > 8.0))
+
+### Plots
+#Daily Precipitation time series
+ggplot(daily_precipitation, aes(x=datetime, y=precip_mm)) + 
+  geom_line(size=0.25) +
+  geom_hline(yintercept=8, color='red',linetype="dashed") +
+  geom_text(aes(as.Date('2007-03-01'),22,label = '8 mm', color='red',vjust = 1.5)) +
+  ylim(0,95) +
+  xlab('Date') +
+  ylab('Rainfall (mm)') +
+  labs(title='Pinnacles Daily Precipitation', hjust=0.5) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 12,hjust = 0.5),
+    axis.title.x = element_text(size = 10),
+    axis.title.y = element_text(size = 10),
+    legend.position = "none")
+
+#Daily Precipitation during breeding season (03/15-06/15) time series
+ggplot(daily_precip_breed_szn, aes(x=datetime, y=precip_mm)) + 
+  geom_line(size=0.25) +
+  geom_hline(yintercept=8, color='red',linetype="dashed") +
+  geom_text(aes(as.Date('2007-03-01'),22,label = '8 mm', color='red',vjust = 1.5)) +
+  ylim(0,95) +
+  xlab('Date') +
+  ylab('Rainfall (mm)') +
+  labs(title='Pinnacles Daily Precipitation during Breeding Season', hjust=0.5) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 12,hjust = 0.5),
+    axis.title.x = element_text(size = 10),
+    axis.title.y = element_text(size = 10),
+    legend.position = "none")
+
 
 
 
@@ -277,6 +330,6 @@ monthly_long_drought =long_term_drought %>%
 #   mutate(n = coalesce(n,0),
 #          ExtremeEvent = coalesce(ExtremeEvent,0))
 
-### Plots
+
 
 

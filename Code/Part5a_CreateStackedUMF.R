@@ -41,27 +41,51 @@ PEFACovs["PEFA"] <- sapply(PEFACovs["PEFA"],as.factor)
 # same for all site in each year (vector has the same value every 15 elements)
 DecToFebTotal_data = rep(DecToFebTotal$Total, time = num_Site)
 
+##Num days heavy rainfall (>8mm/day) during breeding season (03/15-06/15)
+days_heavy_rainfall_data = rep(days_heavy_rainfall$daysHeavyRainfall, time=num_Site)
+
 # Annual Visitors - numeric
 annual_visitors_data = rep(annual_visitors$RecreationVisitors, time = num_Site)
-# hist(annual_visitors_data)
+
 # Heat Degree Days - numeric
 HDD_data = rep(HDD$YearlyHDD, time = num_Site)
 
 # Nestling Period Hot Days - numeric
 HotDays_data = rep(HotDays$n, time = num_Site)
 
-# Short drought?
-# Long drought?
+# Nestling Period Cold Days - numeric
+ColdDays_data = rep(ColdDays$n, time = num_Site)
+
+# Short drought
+ShortDrought_data = rep(ShortDroughtAvgDecToFeb$avg, time = num_Site)
+
+# Long drought
+LongDrought_data = rep(LongDroughtYearlyAverage$avg, time = num_Site)
 
 # create df
 site_cov_df_stacked = data.frame(BreedingYear = BreedingYear_data_stacked - 2006,
                                  AreaType = AreaTypeCovs_stacked$Area_Type,
-                                 PEFA = as.factor(PEFACovs$PEFA),
-                                 DecToFebPrecipitation = scale(DecToFebTotal_data),
                                  AnnualVisitors= scale(log(annual_visitors_data)),
+                                 PEFA = as.factor(PEFACovs$PEFA),
                                  HDD = scale(HDD_data),
-                                 HotDays = scale(HotDays_data))
+                                 HotDays = scale(HotDays_data),
+                                 ColdDays = scale(ColdDays_data),
+                                 DecToFebPrecipitation = scale(DecToFebTotal_data),
+                                 HeavyRain = scale(days_heavy_rainfall_data),
+                                 ShortDrought = scale(ShortDrought_data),
+                                 LongDrought = scale(LongDrought_data))
 
+### Test correlations --------
+numeric_covs = data.frame(AnnualVisitors= scale(log(annual_visitors_data)),
+                          HDD = scale(HDD_data),
+                          HotDays = scale(HotDays_data),
+                          ColdDays = scale(ColdDays_data),
+                          DecToFebPrecipitation = scale(DecToFebTotal_data),
+                          HeavyRain = scale(days_heavy_rainfall_data),
+                          ShortDrought = scale(ShortDrought_data),
+                          LongDrought = scale(LongDrought_data))
+
+cor(as.matrix(numeric_covs))
 
 ## OBSERVATION Covariates - ordered by site-observation (territory-year-obs) ---------------
 # Late Effect --- 0/1 as factors

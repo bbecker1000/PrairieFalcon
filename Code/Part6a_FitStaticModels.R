@@ -273,4 +273,4 @@ mod04b_stacked_det_predict = predict(mod04b_stacked_fit,type='det') # est. for p
 # fl
 # ms <- modSel(fl)
 # ms
-# posteriorSamples()
+# posteriorSamples(modBig_stacked_fit, type = "psi")

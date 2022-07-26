@@ -5,7 +5,7 @@
 #####################################################################################################
 
 source("Code/Part2_DatasetPrep.R")
-source("Code/Part4_GetWeatherData.R")
+source("Code/Part4_GetCovData.R")
 library(unmarked)
 
 
@@ -31,6 +31,7 @@ site_cov_df = data.frame(AreaType = AreaTypeCovs$Area_Type)
 
 
 ## YEARLY SITE Covariates -ordered by site-primary period -----------
+
 # PERA - factor 0/1
 PEFACovs = pivot_longer(data = PEFACov_2022, cols = starts_with("PEFA"), values_to = "PEFA") #column 3 - yearly site cov: nrows should equal nsite*nyear
 PEFACovs$Year = str_sub(PEFACovs$name,-4) 
@@ -45,14 +46,36 @@ DecToFebTotal_data = rep(DecToFebTotal$Total, time = num_Site)
 # Annual Visitors
 annual_visitors_data = rep(annual_visitors$RecreationVisitors, time = num_Site)
 
-# Extreme Events
-extreme_events_data = rep(PINN_extreme_events$ExtremeEvent, time = num_Site)
+##Num days heavy rainfall (>8mm/day) during breeding season (03/15-06/15)
+days_heavy_rainfall_data = rep(days_heavy_rainfall$daysHeavyRainfall, time=num_Site)
+
+# Heat Degree Days - numeric
+HDD_data = rep(HDD$YearlyHDD, time = num_Site)
+
+# Nestling Period Hot Days - numeric
+HotDays_data = rep(HotDays$n, time = num_Site)
+
+# Nestling Period Cold Days - numeric
+ColdDays_data = rep(ColdDays$n, time = num_Site)
+
+# Short drought
+ShortDrought_data = rep(ShortDroughtAvgDecToFeb$avg, time = num_Site)
+
+# Long drought
+LongDrought_data = rep(LongDroughtYearlyAverage$avg, time = num_Site)
+
 
 # create df
 yearly_site_cov_df = data.frame(PEFA = as.factor(PEFA_data),
-                                DecToFebTotal = scale(DecToFebTotal_data),
-                                AnnualVisitors= scale(annual_visitors_data),
-                                ExtremeEvents = as.factor(extreme_events_data))
+                                DecToFebPrecip = scale(DecToFebTotal_data),
+                                AnnualVisitors= scale(log(annual_visitors_data)),
+                                HDD = scale(HDD_data),
+                                HotDays = scale(HotDays_data),
+                                ColdDays = scale(ColdDays_data),
+                                HeavyRain = scale(days_heavy_rainfall_data),
+                                ShortDrought = scale(ShortDrought_data),
+                                LongDrought = scale(LongDrought_data))
+
 
 
 ## OBSERVATION Covariates - ordered by site-primary period-observatio ---------------
