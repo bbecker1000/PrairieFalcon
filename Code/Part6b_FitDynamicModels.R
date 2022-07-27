@@ -51,3 +51,4 @@ mod00_phi_predict = predict(mod00_fit,type='phi') # est. for phi0, phi1, phi2, r
 mod00_det_predict = predict(mod00_fit,type='det') # est. for p1, p2, delta
 
 #lapply(mod00_phi_predict,head)
+summary()
