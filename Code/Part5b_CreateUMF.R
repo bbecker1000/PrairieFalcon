@@ -67,7 +67,7 @@ LongDrought_data = rep(LongDroughtYearlyAverage$avg, time = num_Site)
 
 # create df
 yearly_site_cov_df = data.frame(PEFA = as.factor(PEFA_data),
-                                DecToFebPrecip = scale(DecToFebTotal_data),
+                                DecToFebPrecipitation = scale(DecToFebTotal_data),
                                 AnnualVisitors= scale(log(annual_visitors_data)),
                                 HDD = scale(HDD_data),
                                 HotDays = scale(HotDays_data),
