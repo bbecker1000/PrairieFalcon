@@ -351,7 +351,7 @@ modBig11m_stacked_psiformulas <- c(
   '~BreedingYear + AreaType*AnnualVisitors + PEFA + LongDrought + HeavyRain + HDD + HotDays') #siteCovs on psi[1] and psi[2]
 
 # Detection probability
-modBig11m_stacked_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig11m_stacked_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig11m_stacked_fit <- occuMS(detformulas=modBig11m_stacked_detformulas, 

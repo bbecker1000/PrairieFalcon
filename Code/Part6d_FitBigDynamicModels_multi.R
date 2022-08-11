@@ -17,19 +17,38 @@ num_Rep = max(PRFA202m2_Data$Visit)  # max number of visits within each year
 # c(num_Year,num_Site,num_Rep) #test
 
 
+############ modBig00m ########### 
+### Set Formulas 
+# State Params (site only)
+modBig00m_psiformulas <- c(
+  '~ 1',
+  '~ 1') #siteCovs on psi[1] and psi[2]
+# Transition params (site or yearly site)
+modBig00m_phiformulas <- c('~1','~1','~1','~1','~1','~1')
+# umf_unstacked@phiOrder$multinomial
+# Detection probability (anything)
+modBig00m_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p1, p2 and delta 
+
+### Fit Model 
+modBig00m_fit <- occuMS(detformulas=modBig00m_detformulas, 
+                        psiformulas=modBig00m_psiformulas,
+                        phiformulas=modBig00m_phiformulas, 
+                        data=umf_unstacked, parameterization = "multinomial")
+modBig00m_fit
+# modBig00m_phi_predict = predict(modBig00m_fit,type='phi')
+
 
 ############ modBig01m ########### 
-# Rain before, temp before
 ### Set Formulas 
 # State Params (site only)
 modBig01m_psiformulas <- c(
-  '~ AreaType',
-  '~ AreaType') #siteCovs on psi[1] and psi[2]
+  '~ 1',
+  '~ 1') #siteCovs on psi[1] and psi[2]
 # Transition params (site or yearly site)
 modBig01m_phiformulas <- c('~BreedingYear','~BreedingYear','~BreedingYear','~BreedingYear','~BreedingYear','~BreedingYear')
 # umf_unstacked@phiOrder$multinomial
 # Detection probability (anything)
-modBig01m_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p1, p2 and delta 
+modBig01m_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p1, p2 and delta 
 
 ### Fit Model 
 modBig01m_fit <- occuMS(detformulas=modBig01m_detformulas, 
@@ -41,14 +60,13 @@ modBig01m_fit
 
 ### Get predicted parameter values using predict() 
 # See Agenda 06-27 ToDO #3 for detailed descriptions
-modBig01m_psi_predict = predict(modBig01m_fit, type = "psi") # est. for psi1 and psi2 (i.e. R)
-modBig01m_det_predict = predict(modBig01m_fit,type='det') # est. for p11, p12, p22
+# modBig01m_psi_predict = predict(modBig01m_fit, type = "psi") # est. for psi1 and psi2 (i.e. R)
+# modBig01m_det_predict = predict(modBig01m_fit,type='det') # est. for p11, p12, p22
 #lapply(modBig01m_phi_predict,head)
-modBig01m_phi_predict = predict(modBig01m_fit,type='phi')
+# modBig01m_phi_predict = predict(modBig01m_fit,type='phi', se.fit=FALSE)
 
 
 ############ modBig02m ########### 
-# Rain before, Low temp during
 ### Set Formulas 
 # State Params
 
@@ -56,21 +74,16 @@ modBig02m_psiformulas <- c(
   '~ 1',
   '~ 1') #siteCovs on psi[1] and psi[2]
 # Transition params (site or yearly site)
-modBig02m_phiformulas <- c('~ AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-                          '~ AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-                          '~ AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-                          '~ AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + ColdDays + HotDays',
-                          '~ AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + ColdDays + HotDays',
-                          '~ AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + ColdDays + HotDays')
+modBig02m_phiformulas <- c('~AreaType*AnnualVisitors','~AreaType*AnnualVisitors','~AreaType*AnnualVisitors','~AreaType*AnnualVisitors','~AreaType*AnnualVisitors','~AreaType*AnnualVisitors')
 #umf_unstacked@phiOrder$multinomial
 # Detection probability
-modBig02m_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p1, p2 and delta 
+modBig02m_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p1, p2 and delta 
 
 ### Fit Model 
 modBig02m_fit <- occuMS(detformulas=modBig02m_detformulas, 
                        psiformulas=modBig02m_psiformulas,
                        phiformulas=modBig02m_phiformulas, 
-                       data=umf_unstacked, parameterization = "condbinom")
+                       data=umf_unstacked, parameterization = "multinomial")
 modBig02m_fit
 #coef(modBig02m_fit)
 
@@ -82,20 +95,22 @@ modBig02m_fit
 
 
 ############ modBig03m ########### 
-# Long Drought, Temp before
 ### Set Formulas 
 # State Params
 modBig03m_psiformulas <- c(
-  '~ AreaType*AnnualVisitors + PEFA + LongDrought',
-  '~ AreaType*AnnualVisitors + PEFA + LongDrought + HeavyRain + HDD + HotDays') #siteCovs on psi[1] and psi[2]
-
+  '~ 1',
+  '~ 1') #siteCovs on psi[1] and psi[2]
+# Transition params (site or yearly site)
+modBig03m_phiformulas <- c('~PEFA','~PEFA','~PEFA','~PEFA','~PEFA','~PEFA')
+#umf_unstacked@phiOrder$multinomial
 # Detection probability
-modBig03m_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p1, p2 and delta 
+modBig03m_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p1, p2 and delta 
 
 ### Fit Model 
 modBig03m_fit <- occuMS(detformulas=modBig03m_detformulas, 
-                               psiformulas=modBig03m_psiformulas,
-                               data=umf, parameterization = "condbinom")
+                        psiformulas=modBig03m_psiformulas,
+                        phiformulas=modBig03m_phiformulas, 
+                        data=umf_unstacked, parameterization = "multinomial")
 modBig03m_fit
 #coef(modBig03m_fit)
 
@@ -104,24 +119,25 @@ modBig03m_fit
 # modBig03m_psi_predict = predict(modBig03m_fit, type = "psi") # est. for psi1 and psi2 (i.e. R)
 # modBig03m_det_predict = predict(modBig03m_fit,type='det') # est. for p1, p2, delta
 #lapply(modBig03mstacked_phi_predict,head)
-
+modBig03m_phi_predict = predict(modBig03m_fit,type='phi')
 
 
 ############ modBig04m ########### 
-# Long Drought, Low Temp During
 ### Set Formulas 
 # State Params
 modBig04m_psiformulas <- c(
-  '~ AreaType*AnnualVisitors + PEFA + LongDrought',
-  '~ AreaType*AnnualVisitors + PEFA + LongDrought + HeavyRain + ColdDays + HotDays') #siteCovs on psi[1] and psi[2]
-
+  '~ 1',
+  '~ 1') #siteCovs on psi[1] and psi[2]
+#transition
+modBig04m_phiformulas <- c('~DecToFebPrecipitation','~DecToFebPrecipitation','~DecToFebPrecipitation','~DecToFebPrecipitation','~DecToFebPrecipitation','~DecToFebPrecipitation')
 # Detection probability
-modBig04m_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p1, p2 and delta 
+modBig04m_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p1, p2 and delta 
 
 ### Fit Model 
 modBig04m_fit <- occuMS(detformulas=modBig04m_detformulas, 
-                               psiformulas=modBig04m_psiformulas,
-                               data=umf, parameterization = "condbinom")
+                        psiformulas=modBig04m_psiformulas,
+                        phiformulas=modBig04m_phiformulas, 
+                        data=umf_unstacked, parameterization = "multinomial")
 modBig04m_fit
 #coef(modBig04m_fit)
 
@@ -133,20 +149,21 @@ modBig04m_fit
 
 
 ############ modBig05m ########### 
-# Long Drought, Temp before
 ### Set Formulas 
 # State Params
 modBig05m_psiformulas <- c(
-  '~ AreaType*AnnualVisitors + PEFA + ShortDrought',
-  '~ AreaType*AnnualVisitors + PEFA + ShortDrought + HeavyRain + HDD + HotDays') #siteCovs on psi[1] and psi[2]
-
+  '~ 1',
+  '~ 1') #siteCovs on psi[1] and psi[2]
+# transition 
+modBig05m_phiformulas <- c('~LongDrought','~LongDrought','~LongDrought','~LongDrought','~LongDrought','~LongDrought')
 # Detection probability
-modBig05m_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p1, p2 and delta 
+modBig05m_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p1, p2 and delta 
 
 ### Fit Model 
 modBig05m_fit <- occuMS(detformulas=modBig05m_detformulas, 
-                               psiformulas=modBig05m_psiformulas,
-                               data=umf, parameterization = "condbinom")
+                        psiformulas=modBig05m_psiformulas,
+                        phiformulas=modBig05m_phiformulas, 
+                        data=umf_unstacked, parameterization = "multinomial")
 modBig05m_fit
 #coef(modBig05m_fit)
 
@@ -159,20 +176,21 @@ modBig05m_fit
 
 
 ############ modBig06m ########### 
-# Long Drought, Temp before
 ### Set Formulas 
 # State Params
 modBig06m_psiformulas <- c(
-  '~ AreaType*AnnualVisitors + PEFA + ShortDrought',
-  '~ AreaType*AnnualVisitors + PEFA + ShortDrought + HeavyRain + ColdDays + HotDays') #siteCovs on psi[1] and psi[2]
-
+  '~ 1',
+  '~ 1') #siteCovs on psi[1] and psi[2]
+# transition 
+modBig06m_phiformulas <- c('~ShortDrought','~ShortDrought','~ShortDrought','~ShortDrought','~ShortDrought','~ShortDrought')
 # Detection probability
 modBig06m_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p1, p2 and delta 
 
 ### Fit Model 
 modBig06m_fit <- occuMS(detformulas=modBig06m_detformulas, 
-                               psiformulas=modBig06m_psiformulas,
-                               data=umf, parameterization = "condbinom")
+                        psiformulas=modBig06m_psiformulas,
+                        phiformulas=modBig06m_phiformulas, 
+                        data=umf_unstacked, parameterization = "multinomial")
 modBig06m_fit
 #coef(modBig06m_fit)
 
@@ -189,16 +207,18 @@ modBig06m_fit
 ### Set Formulas 
 # State Params
 modBig07m_psiformulas <- c(
-  '~ AreaType*AnnualVisitors + PEFA + LongDrought',
-  '~ AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi[1] and psi[2]
-
+  '~ 1',
+  '~ 1') #siteCovs on psi[1] and psi[2]
+# transition 
+modBig07m_phiformulas <- c('~DecToFebPrecipitation','~DecToFebPrecipitation+HeavyRain+HDD+HotDays','~DecToFebPrecipitation','~DecToFebPrecipitation+HeavyRain+HDD+HotDays','~DecToFebPrecipitation+HeavyRain+HDD+HotDays','~DecToFebPrecipitation+HeavyRain+HDD+HotDays')
 # Detection probability
-modBig07m_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p1, p2 and delta 
+modBig07m_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p1, p2 and delta 
 
 ### Fit Model 
 modBig07m_fit <- occuMS(detformulas=modBig07m_detformulas, 
-                               psiformulas=modBig07m_psiformulas,
-                               data=umf, parameterization = "condbinom")
+                        psiformulas=modBig07m_psiformulas,
+                        phiformulas=modBig07m_phiformulas, 
+                        data=umf_unstacked, parameterization = "multinomial")
 modBig07m_fit
 #coef(modBig07m_fit)
 
@@ -207,6 +227,7 @@ modBig07m_fit
 # modBig07m_psi_predict = predict(modBig07m_fit, type = "psi") # est. for psi1 and psi2 (i.e. R)
 # modBig07m_det_predict = predict(modBig07m_fit,type='det') # est. for p1, p2, delta
 #lapply(modBig07m_phi_predict,head)
+# modBig07m_phi_predict = predict(modBig07m_fit,type='phi')
 
 
 ############ modBig08m ########### 
@@ -214,16 +235,18 @@ modBig07m_fit
 ### Set Formulas 
 # State Params
 modBig08m_psiformulas <- c(
-  '~ AreaType*AnnualVisitors + PEFA + ShortDrought',
-  '~ AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi[1] and psi[2]
-
+  '~ 1',
+  '~ 1') #siteCovs on psi[1] and psi[2]
+# transition 
+modBig08m_phiformulas <- c('~PEFA','~PEFA+HeavyRain+HDD+HotDays','~PEFA','~PEFA+HeavyRain+HDD+HotDays','~PEFA+HeavyRain+HDD+HotDays','~PEFA+HeavyRain+HDD+HotDays')
 # Detection probability
-modBig08m_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p1, p2 and delta 
+modBig08m_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p1, p2 and delta 
 
 ### Fit Model 
 modBig08m_fit <- occuMS(detformulas=modBig08m_detformulas, 
-                               psiformulas=modBig08m_psiformulas,
-                               data=umf, parameterization = "condbinom")
+                        psiformulas=modBig08m_psiformulas,
+                        phiformulas=modBig08m_phiformulas, 
+                        data=umf_unstacked, parameterization = "multinomial")
 modBig08m_fit
 #coef(modBig08m_fit)
 
@@ -240,16 +263,18 @@ modBig08m_fit
 ### Set Formulas 
 # State Params
 modBig09m_psiformulas <- c(
-  '~ AreaType*AnnualVisitors + PEFA + LongDrought',
-  '~ AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + ColdDays + HotDays') #siteCovs on psi[1] and psi[2]
-
+  '~ 1',
+  '~ 1') #siteCovs on psi[1] and psi[2]
+# transition 
+modBig09m_phiformulas <- c('~AreaType*AnnualVisitors','~AreaType*AnnualVisitors+HeavyRain+HDD+HotDays','~AreaType*AnnualVisitors','~AreaType*AnnualVisitors+HeavyRain+HDD+HotDays','~AreaType*AnnualVisitors+HeavyRain+HDD+HotDays','~AreaType*AnnualVisitors+HeavyRain+HDD+HotDays')
 # Detection probability
 modBig09m_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p1, p2 and delta 
 
 ### Fit Model 
 modBig09m_fit <- occuMS(detformulas=modBig09m_detformulas, 
-                               psiformulas=modBig09m_psiformulas,
-                               data=umf, parameterization = "condbinom")
+                        psiformulas=modBig09m_psiformulas,
+                        phiformulas=modBig09m_phiformulas, 
+                        data=umf_unstacked, parameterization = "multinomial")
 modBig09m_fit
 #coef(modBig09m_fit)
 
@@ -267,16 +292,18 @@ modBig09m_fit
 ### Set Formulas 
 # State Params
 modBig10m_psiformulas <- c(
-  '~ AreaType*AnnualVisitors + PEFA + ShortDrought',
-  '~ AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + ColdDays + HotDays') #siteCovs on psi[1] and psi[2]
-
+  '~ 1',
+  '~ 1') #siteCovs on psi[1] and psi[2]
+# transition 
+modBig10m_phiformulas <- c('~ShortDrought','~ShortDrought+HeavyRain+HDD+HotDays','~ShortDrought','~ShortDrought+HeavyRain+HDD+HotDays','~ShortDrought+HeavyRain+HDD+HotDays','~ShortDrought+HeavyRain+HDD+HotDays')
 # Detection probability
-modBig10m_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p1, p2 and delta 
+modBig10m_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p1, p2 and delta 
 
 ### Fit Model 
 modBig10m_fit <- occuMS(detformulas=modBig10m_detformulas, 
-                               psiformulas=modBig10m_psiformulas,
-                               data=umf, parameterization = "condbinom")
+                        psiformulas=modBig10m_psiformulas,
+                        phiformulas=modBig10m_phiformulas, 
+                        data=umf_unstacked, parameterization = "multinomial")
 modBig10m_fit
 #coef(modBig10m_fit)
 

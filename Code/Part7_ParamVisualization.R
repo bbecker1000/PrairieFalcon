@@ -5,6 +5,7 @@
 #####################################################################################################
 
 source("Code/Part6c_FitBigStaticModels.R")
+source("Code/Part6e_FitBigStaticModels_multi.R")
 
 ##### Prepare predicted data - multinomial #####
 ### Using the best stacked static multinomial model modBig11m_stacked_fit
@@ -65,6 +66,7 @@ ggplot(AnnualAvgPredicted, aes(x= YearDate, y = meanPsi1, group  = AreaType, col
   scale_y_continuous(breaks = scales::breaks_pretty(8))+  
   labs(title="Yearly Average Predicted Psi1 by Area Type", x="Year", y = "psi1",
        subtitle = "with the 2.5th percentile and 97.5th percentile")+
+  ylim(0,1)+
   scale_shape_manual(values=c(15, 17))+
   scale_linetype_manual(values  = c("solid", "dashed"))+
   scale_color_manual(values=c('#E69F00','#999999')) +
@@ -87,6 +89,7 @@ ggplot(AnnualAvgPredicted, aes(x= YearDate, y = meanPsi2, group  = AreaType, col
   scale_y_continuous(breaks = scales::breaks_pretty(8))+  
   labs(title="Yearly Average Predicted Psi2 by Area Type", x="Year", y = "psi2",
        subtitle = "with the 2.5th percentile and 97.5th percentile")+
+  ylim(0,1)+
   scale_shape_manual(values=c(15, 17))+
   scale_linetype_manual(values  = c("solid", "dashed"))+
   scale_color_manual(values=c('#E69F00','#999999')) +
@@ -162,6 +165,7 @@ ggplot(AnnualAvgPredicted_condbinom, aes(x= YearDate, y = meanPsi1, group  = Are
   scale_y_continuous(breaks = scales::breaks_pretty(8))+  
   labs(title="Yearly Average Predicted Psi1 by Area Type (condbinom)", x="Year", y = "psi1",
        subtitle = "with the 2.5th percentile and 97.5th percentile")+
+  ylim(0,1)+
   scale_shape_manual(values=c(15, 17))+
   scale_linetype_manual(values  = c("solid", "dashed"))+
   scale_color_manual(values=c('#E69F00','#999999')) +
@@ -184,6 +188,7 @@ ggplot(AnnualAvgPredicted_condbinom, aes(x= YearDate, y = meanPsi2, group  = Are
   scale_y_continuous(breaks = scales::breaks_pretty(8))+  
   labs(title="Yearly Average Predicted Psi2 by Area Type (condbinom)", x="Year", y = "psi2",
        subtitle = "with the 2.5th percentile and 97.5th percentile")+
+  ylim(0,1)+
   scale_shape_manual(values=c(15, 17))+
   scale_linetype_manual(values  = c("solid", "dashed"))+
   scale_color_manual(values=c('#E69F00','#999999')) +

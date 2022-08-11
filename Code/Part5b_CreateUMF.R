@@ -32,6 +32,9 @@ site_cov_df = data.frame(AreaType = AreaTypeCovs$Area_Type)
 
 ## YEARLY SITE Covariates -ordered by site-primary period -----------
 
+# Breeding Year
+BreedingYear_data = rep(c(2007:2021), time = num_Site)
+
 # PERA - factor 0/1
 PEFACovs = pivot_longer(data = PEFACov_2022, cols = starts_with("PEFA"), values_to = "PEFA") #column 3 - yearly site cov: nrows should equal nsite*nyear
 PEFACovs$Year = str_sub(PEFACovs$name,-4) 
@@ -66,7 +69,8 @@ LongDrought_data = rep(LongDroughtYearlyAverage$avg, time = num_Site)
 
 
 # create df
-yearly_site_cov_df = data.frame(PEFA = as.factor(PEFA_data),
+yearly_site_cov_df = data.frame(BreedingYear = BreedingYear_data-2006,
+                                PEFA = as.factor(PEFA_data),
                                 DecToFebPrecipitation = scale(DecToFebTotal_data),
                                 AnnualVisitors= scale(log(annual_visitors_data)),
                                 HDD = scale(HDD_data),
