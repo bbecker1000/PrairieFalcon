@@ -77,7 +77,7 @@ cHat_pb
 # The quick way to check on that is to use the following on the result from colext
 # (and even occu and several other unmarked functions).  If that result is named fm, then execute the following:
 
-qr(BEST_MODEL@opt$hessian)$rank - length(BEST_MODEL@opt$par)
+qr(BEST_MODEL@opt$hessian)$rank - length(BEST_MODEL@opt$par) 
 
 # If this is less than zero, you have problems. 
 

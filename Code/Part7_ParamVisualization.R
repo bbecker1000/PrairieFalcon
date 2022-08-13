@@ -10,7 +10,13 @@ source("Code/Part6e_FitBigStaticModels_multi.R")
 ##### Prepare predicted data - multinomial #####
 ### Using the best stacked static multinomial model modBig11m_stacked_fit
 # Psi1
-predicted_psi1 = modBig11m_stacked_psi_predict$`psi[1]`
+
+# adding BEST_MODEL
+
+
+
+
+predicted_psi1 = BEST_MODEL_psi_predict$`psi[1]` # changed to BEST_MODEL
 predicted_psi1 = predicted_psi1 %>% 
   rename(
     Psi1 = Predicted,
@@ -24,7 +30,7 @@ predicted_psi1 = predicted_psi1 %>%
          YearDate = ymd(rep(2007:2021, time = 43), truncated = 2L))
   
 # Psi2
-predicted_psi2 = modBig11m_stacked_psi_predict$`psi[2]`
+predicted_psi2 = BEST_MODEL_psi_predict$`psi[2]` # changed to BEST_MODEL
 predicted_psi2 = predicted_psi2 %>% 
   rename(
     Psi2 = Predicted,
@@ -60,7 +66,7 @@ AnnualAvgPredicted = predicted %>%
 ggplot(AnnualAvgPredicted, aes(x= YearDate, y = meanPsi1, group  = AreaType, color = AreaType, label= round(meanPsi1,2)))+
   geom_line(aes(linetype=AreaType))+
   geom_point(aes(shape=AreaType), size = 3)+
-  geom_text(vjust = -0.2, hjust = -0.2)+
+  #geom_text(vjust = -0.2, hjust = -0.2)+
   geom_errorbar(aes(ymin=low.psi1, ymax=high.psi1), width = 150, size = 0.6, position = position_dodge(.5)) +
   scale_x_date(breaks = scales::breaks_pretty(15))+
   scale_y_continuous(breaks = scales::breaks_pretty(8))+  
@@ -80,10 +86,14 @@ ggplot(AnnualAvgPredicted, aes(x= YearDate, y = meanPsi1, group  = AreaType, col
     axis.text.y = element_text(size = 10)) 
 
 # psi2
-ggplot(AnnualAvgPredicted, aes(x= YearDate, y = meanPsi2, group  = AreaType, color = AreaType, label = round(meanPsi2,2)))+
+# this plot should be adjusted to combine AreaType -- BB 2022-08-12
+ggplot(AnnualAvgPredicted, aes(x= YearDate, y = meanPsi2, 
+                               group  = AreaType, 
+                               color = AreaType, 
+                               label = round(meanPsi2,2)))+
   geom_line(aes(linetype=AreaType))+
   geom_point(aes(shape=AreaType), size = 3)  +
-  geom_text(vjust = -0.2, hjust = -0.2)+
+  #geom_text(vjust = -0.2, hjust = -0.2)+
   geom_errorbar(aes(ymin=low.psi2, ymax=high.psi2), width = 150, size = 0.6, position = position_dodge(.5)) +
   scale_x_date(breaks = scales::breaks_pretty(15))+
   scale_y_continuous(breaks = scales::breaks_pretty(8))+  
@@ -137,7 +147,7 @@ ggplot(AnnualAvgPredicted, aes(x= YearDate, y = meanPsi2, group  = AreaType, col
 #                      size=2, color="red", position=position_dodge(0.8))
 
 
-
+## Please update to multinomial. - BB 2022-08-12
 
 ##### Prepare predicted data - conditional binomial #####
 # Yearly average 
@@ -239,3 +249,13 @@ occuPred <- predict(modBig01_stacked_fit,
                     newdata = dataPred,
                     na.rm = TRUE,
                     inf.rm = TRUE)
+
+
+
+
+
+
+
+
+
+

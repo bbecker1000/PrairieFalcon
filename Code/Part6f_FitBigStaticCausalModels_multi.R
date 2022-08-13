@@ -30,13 +30,18 @@ modBig01m_stacked_psiformulas <- c(
   '~BreedingYear + AreaType + AnnualVisitors + PEFA + DecToFebPrecipitation',
   '~BreedingYear + AreaType + AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi[1] and psi[2]
 
+## Adding psi2 long drought has no effect on winter rain
+## adding psi 2 shortdrought weakens winter rain effect, but still a strong effect.  
+## so some additional information from the short drought effect.  Mention in results
+## Cold days and min temp not important
+
 # Detection probability
 modBig01m_stacked_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig01m_stacked_CAUSAL <- occuMS(detformulas=modBig01m_stacked_detformulas, 
                                psiformulas=modBig01m_stacked_psiformulas,
-                               data=umf_stacked, parameterization = "multinomial")
+                               data=umf_stacked, parameterization = "condbinom")
 modBig01m_stacked_CAUSAL
 #coef(modBig01m_stacked_fit)
 
