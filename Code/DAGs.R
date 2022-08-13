@@ -55,6 +55,9 @@ DAG_PRFA <- dagitty("dag{
 plot(DAG_PRFA)
 
 
+
+
+
 ##### Big Model DAG #####
 
 # Psi
@@ -81,6 +84,13 @@ DAG_modBig_psi <- dagitty("dag{
 coordinates(DAG_modBig_psi) <- list(x=c(BreedingYear=1,AreaType=2,Visitor=3,PEFA=4,WinterPrecip=5,ShortDrought=5, LongDrought =5, Psi = 3, VegU= 4, PreyU = 4),
                                     y=c(BreedingYear=4,AreaType=4,Visitor=4,PEFA=4,WinterPrecip=3,ShortDrought=2, LongDrought =1, Psi = 2, VegU=2, PreyU = 1))
 plot(DAG_modBig_psi)
+
+exposures(DAG_modBig_psi)
+outcomes(DAG_modBig_psi)
+adjustmentSets(DAG_modBig_psi)
+impliedConditionalIndependencies(DAG_modBig_psi)
+
+
 
 DAG_modBig_R <- dagitty("dag{ 
   BreedingYear -> R;
@@ -117,7 +127,7 @@ coordinates(DAG_modBig_R) <- list(x=c(BreedingYear=1,AreaType=2,Visitor=3,PEFA=4
                                     y=c(BreedingYear=5,AreaType=5,Visitor=5,PEFA=5,WinterPrecip=4,ShortDrought=3, LongDrought =2,RainDuringBreeding = 1,EctoparasiteU = 2,R = 3, WinterTemp = 1, PreyU = 2, MinTempDuringBreeding = 2,MaxTempDuringBreeding = 3, VegU= 3))
 
 plot(DAG_modBig_R)
-
+impliedConditionalIndependencies(DAG_modBig_R)
 
 
 
@@ -172,3 +182,4 @@ plot(g)
 # A PAG
 #g <- dagitty("pag{ x @-@ y @-@ z }")
 #plot(g)
+

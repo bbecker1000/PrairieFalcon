@@ -2,22 +2,25 @@
 
 # AICcmodavg::mb.gof.test(mod04b_stacked_fit) # doesn't work with occuMS()
 # residuals
-plot(mod04b_stacked_fit) #nothing too crazy
+
+BEST_MODEL <- modBig01m_stacked_CAUSAL
+
+plot(BEST_MODEL) #nothing too crazy
 
 
 ## trying patch from Ken Kellner to run ranef and parpoot on model with NAs (2022-07-26)
 source("Code/occuMS_patch.R") 
-ranef(mod04b_stacked_fit)  # Works !
-parboot(mod04b_stacked_fit) # works !
+ranef(BEST_MODEL)  # Works !
+parboot(BEST_MODEL) # works !
 
 # Stats for parboot to fit
 # basically want chi.sq and c-hat
 # function
-fitstats <- function(mod04b_stacked_fit, 
+fitstats <- function(BEST_MODEL, 
                      method = "nonparboot") {
-  observed <- getY(mod04b_stacked_fit@data)
-  expected <- fitted(mod04b_stacked_fit)
-  resids <- residuals(mod04b_stacked_fit,
+  observed <- getY(BEST_MODEL@data)
+  expected <- fitted(BEST_MODEL)
+  resids <- residuals(BEST_MODEL,
                       method = "nonparboot")
   sse <- sum(resids^2,
              na.rm = TRUE)
@@ -33,11 +36,8 @@ fitstats <- function(mod04b_stacked_fit,
 
 
 
-## insert model name here:
-MODEL_NAME <- mod04b_stacked_fit
-
 #run parboot
-pb <- parboot(MODEL_NAME,
+pb <- parboot(BEST_MODEL,
               fitstats,
               nsim = 100,
               report = TRUE,
@@ -62,13 +62,13 @@ cHat_pb
 ## cross val
 #k-fold cross validation with 10 folds
 # require multinom
-(kfold = crossVal(mod04b_stacked_fit, method="Kfold", folds=20))
+(kfold = crossVal(BEST_MODEL, method="Kfold", folds=20))
 
-#holdout method with 25
-(holdout = crossVal(mod04b_stacked_fit,method='holdout', holdoutPct=0.25))
+#holdout method
+(holdout = crossVal(BEST_MODEL,method='holdout', holdoutPct=0.25))
 
 #Leave-one-out method
-(leave = crossVal(mod04b_stacked_fit, method='leaveOneOut'))
+(leave = crossVal(BEST_MODEL, method='leaveOneOut'))
 
 # When the sign of a coefficient is not what one expects (or actually even if that is not the case), 
 # one can check to see if the rank of the hessian is equal to the number of parameters in the model.  
@@ -77,7 +77,7 @@ cHat_pb
 # The quick way to check on that is to use the following on the result from colext
 # (and even occu and several other unmarked functions).  If that result is named fm, then execute the following:
 
-qr(mod04b_stacked_fit@opt$hessian)$rank - length(mod04b_stacked_fit@opt$par)
+qr(BEST_MODEL@opt$hessian)$rank - length(BEST_MODEL@opt$par)
 
 # If this is less than zero, you have problems. 
 
