@@ -6,14 +6,13 @@
 
 source("Code/Part6c_FitBigStaticModels.R")
 source("Code/Part6e_FitBigStaticModels_multi.R")
+source("Code/Part6f_FitBigStaticCausalModels_multi.R")
 
 ##### Prepare predicted data - multinomial #####
 ### Using the best stacked static multinomial model modBig11m_stacked_fit
 # Psi1
 
 # adding BEST_MODEL
-
-
 
 
 predicted_psi1 = BEST_MODEL_psi_predict$`psi[1]` # changed to BEST_MODEL
@@ -149,9 +148,10 @@ ggplot(AnnualAvgPredicted, aes(x= YearDate, y = meanPsi2,
 
 ## Please update to multinomial. - BB 2022-08-12
 
+
 ##### Prepare predicted data - conditional binomial #####
 # Yearly average 
-AnnualAvgPredicted_condbinom = predicted_state_params %>% 
+AnnualAvgPredicted_condbinom = BEST_MODEL_state_params %>% 
   mutate(Territory = PEFACovs$TerritoryName,
          AreaType = PRFADetectHistory_2022_stacked$Area_Type,
          BreedingYear = rep(2007:2021, time = 43),
@@ -169,11 +169,10 @@ AnnualAvgPredicted_condbinom = predicted_state_params %>%
 ggplot(AnnualAvgPredicted_condbinom, aes(x= YearDate, y = meanPsi1, group  = AreaType, color = AreaType, label= round(meanPsi1,2)))+
   geom_line(aes(linetype=AreaType))+
   geom_point(aes(shape=AreaType), size = 3)+
-  geom_text(vjust = -0.2, hjust = -0.2)+
   geom_errorbar(aes(ymin=low.psi1, ymax=high.psi1), width = 150, size = 0.6, position = position_dodge(.5)) +
   scale_x_date(breaks = scales::breaks_pretty(15))+
   scale_y_continuous(breaks = scales::breaks_pretty(8))+  
-  labs(title="Yearly Average Predicted Psi1 by Area Type (condbinom)", x="Year", y = "psi1",
+  labs(title="Yearly Average Predicted Psi1 by Area Type (cond_binom)", x="Year", y = "psi1",
        subtitle = "with the 2.5th percentile and 97.5th percentile")+
   ylim(0,1)+
   scale_shape_manual(values=c(15, 17))+
@@ -189,14 +188,22 @@ ggplot(AnnualAvgPredicted_condbinom, aes(x= YearDate, y = meanPsi1, group  = Are
     axis.text.y = element_text(size = 10)) 
 
 # psi2
-ggplot(AnnualAvgPredicted_condbinom, aes(x= YearDate, y = meanPsi2, group  = AreaType, color = AreaType, label = round(meanPsi2,2)))+
-  geom_line(aes(linetype=AreaType))+
-  geom_point(aes(shape=AreaType), size = 3)  +
-  geom_text(vjust = -0.2, hjust = -0.2)+
+AnnualAvgPredictedPsi2_condbinom = BEST_MODEL_state_params %>% 
+  mutate(Territory = PEFACovs$TerritoryName,
+         BreedingYear = rep(2007:2021, time = 43),
+         YearDate = ymd(rep(2007:2021, time = 43), truncated = 2L)) %>% 
+  group_by(YearDate) %>% 
+  summarise(meanPsi2 =  mean(psi2),
+            high.psi2 = quantile(psi2, 0.975),
+            low.psi2 = quantile(psi2, 0.025),) 
+
+ggplot(AnnualAvgPredictedPsi2_condbinom, aes(x= YearDate, y = meanPsi2))+
+  geom_line()+
+  geom_point(size = 3)  +
   geom_errorbar(aes(ymin=low.psi2, ymax=high.psi2), width = 150, size = 0.6, position = position_dodge(.5)) +
   scale_x_date(breaks = scales::breaks_pretty(15))+
   scale_y_continuous(breaks = scales::breaks_pretty(8))+  
-  labs(title="Yearly Average Predicted Psi2 by Area Type (condbinom)", x="Year", y = "psi2",
+  labs(title="Yearly Average Predicted Psi2 by Area Type (cond_binom)", x="Year", y = "psi2",
        subtitle = "with the 2.5th percentile and 97.5th percentile")+
   ylim(0,1)+
   scale_shape_manual(values=c(15, 17))+
@@ -210,7 +217,6 @@ ggplot(AnnualAvgPredicted_condbinom, aes(x= YearDate, y = meanPsi2, group  = Are
     axis.title.y = element_text(size = 12),
     axis.text.x = element_text(size = 10),
     axis.text.y = element_text(size = 10)) 
-
 
 
 ##### Plot psi2 predictions with Winter Precipitation by Year - multinomial #####
@@ -239,7 +245,8 @@ ggplot(df, aes(x= YearDate, y = values, group  = variables, color = variables))+
 
 # plot(modBig02_stacked_fit) may work for multinomial parametarization
 
-##### ##### Plot R predictions with PEFA ??? #####
+
+##### Plot R predictions with PEFA ??? #####
 # library(ggeffects) --- doesn't work
 dataPred = umf_stacked@siteCovs
 df = dataPred %>% summarise_if(is.numeric, mean)
@@ -252,10 +259,76 @@ occuPred <- predict(modBig01_stacked_fit,
 
 
 
+######### plot covariate effects ---------------------------------------
+
+preddata.model <- predict(BEST_MODEL, type = "psi", appendData = TRUE, level = 0.95)  
+
+preddata.model.psi<- as_tibble(preddata.model[["psi"]])
+preddata.model.R<- as_tibble(preddata.model[["R"]])
+
+WinterRain.df <- as_tibble(umf_stacked@siteCovs[["DecToFebPrecipitation"]])
+Core.df <- as_tibble(umf_stacked@siteCovs[["AreaType"]])
+PEFA.df <- as_tibble(umf_stacked@siteCovs[["PEFA"]])
+
+WinterRain_Core_PEFA.df.psi <-  cbind(preddata.model.psi, WinterRain.df, Core.df, PEFA.df)
+WinterRain_Core_PEFA.df.psi <- WinterRain_Core_PEFA.df.psi %>%
+  rename("WinterRain" = 5,
+         "Core" = 6,
+         "PEFA" = 7)
+WinterRain_Core_PEFA.df.psi
+
+WinterRain_Core_PEFA.df.R <-  cbind(preddata.model.R, WinterRain.df, Core.df, PEFA.df)
+WinterRain_Core_PEFA.df.R <- WinterRain_Core_PEFA.df.R %>%
+  rename("WinterRain" = 5,
+         "Core" = 6,
+         "PEFA" = 7)
+WinterRain_Core_PEFA.df.R
+
+# replace 1 with core and 0 with non-core
+WinterRain_Core_PEFA.df.R$Core <- ifelse(WinterRain_Core_PEFA.df.R$Core == "0", "Non-core", "Core") 
+WinterRain_Core_PEFA.df.psi$Core <- ifelse(WinterRain_Core_PEFA.df.psi$Core == "0", "Non-core", "Core") 
+
+# replace 1 with PEFA present and 0 with PEFA absent
+WinterRain_Core_PEFA.df.R$PEFA <- ifelse(WinterRain_Core_PEFA.df.R$PEFA == "0", "PEFA absent", "PEFA present") 
+
+
+## plot Winter Rain vs R
+p1.WinterRain.R <- ggplot(WinterRain_Core_PEFA.df.R, aes(WinterRain, Predicted)) + 
+  geom_smooth(method = "loess") + 
+  geom_jitter() +
+  xlab("Winter Rainfall") + ylab("Conditional R") +
+  #geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.1, data = WinterRain.df.R)+
+  ylim(0,1) + theme_minimal()
+p1.WinterRain.R
 
 
 
+## plot Area Type vs R
+p1.Core.R <- ggplot(WinterRain_Core_PEFA.df.R, aes(Core, Predicted)) +
+  stat_boxplot(geom ='errorbar', width = 0.6) +
+  geom_boxplot(fill = 'grey', width = 0.6) +
+  xlab("Area Type") + ylab("Conditional R") +
+  #geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.1, data = WinterRain.df.R)+
+  ylim(0,1)+ theme_minimal()
+p1.Core.R
 
 
+# plot PEFA vs R
+p1.PEFA.R <- ggplot(WinterRain_Core_PEFA.df.R, aes(PEFA, Predicted)) + 
+  stat_boxplot(geom ='errorbar', width = 0.6) +
+  geom_boxplot(fill = 'grey', width = 0.6) +
+  xlab("PEFA") + ylab("Conditional R") +
+  #geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.1, data = WinterRain.df.R)+
+  ylim(0,1)+ theme_minimal()
+p1.PEFA.R
 
+## plot Area Type vs psi
+p1.Core.psi <- ggplot(WinterRain_Core_PEFA.df.psi, aes(Core, Predicted)) + 
+  stat_boxplot(geom ='errorbar', width = 0.6) +
+  geom_boxplot(fill = 'grey', width = 0.6) +
+  xlab("Area Type") + ylab("probability of occupancy") +
+  #geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.1, data = WinterRain.df.R)+
+  ylim(0,1)+ theme_minimal()
+p1.Core.psi
 
+# --------------------------------------------------------------

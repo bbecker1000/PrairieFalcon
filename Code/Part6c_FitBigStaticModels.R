@@ -39,21 +39,21 @@ modBig01_stacked_fit
 
 ### Get predicted parameter values using predict() 
 # See Agenda 06-27 ToDO #3 for detailed descriptions
-modBig01_stacked_psi_predict = predict(modBig01_stacked_fit, type = "psi") # est. for psi1 and psi2 (i.e. R)
-modBig01_stacked_det_predict = predict(modBig01_stacked_fit,type='det') # est. for p1, p2, delta
+# modBig01_stacked_psi_predict = predict(modBig01_stacked_fit, type = "psi") # est. for psi1 and psi2 (i.e. R)
+# modBig01_stacked_det_predict = predict(modBig01_stacked_fit,type='det') # est. for p1, p2, delta
 #lapply(modBig01_stacked_phi_predict,head)
-predicted_state_params = data.frame(
-  psi = modBig01_stacked_psi_predict$psi$Predicted,
-  R = modBig01_stacked_psi_predict$R$Predicted) %>% 
-  mutate(psi1 = psi*(1-R),
-         psi2 = psi*R)
-predicted_det_params = data.frame(
-  p1 = modBig01_stacked_det_predict$`p[1]`$Predicted,
-  p2 = modBig01_stacked_det_predict$`p[2]`$Predicted,
-  delta = modBig01_stacked_det_predict$delta$Predicted) %>% 
-  mutate(p11 = p1,
-         p12 = p2*(1-delta),
-         p22 = p2*delta)
+# predicted_state_params = data.frame(
+#   psi = modBig01_stacked_psi_predict$psi$Predicted,
+#   R = modBig01_stacked_psi_predict$R$Predicted) %>% 
+#   mutate(psi1 = psi*(1-R),
+#          psi2 = psi*R)
+# predicted_det_params = data.frame(
+#   p1 = modBig01_stacked_det_predict$`p[1]`$Predicted,
+#   p2 = modBig01_stacked_det_predict$`p[2]`$Predicted,
+#   delta = modBig01_stacked_det_predict$delta$Predicted) %>% 
+#   mutate(p11 = p1,
+#          p12 = p2*(1-delta),
+#          p22 = p2*delta)
 
 
 ############ modBig01a_stacked_noYear ########### 

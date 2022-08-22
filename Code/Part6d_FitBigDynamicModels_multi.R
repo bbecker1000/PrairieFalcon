@@ -11,9 +11,9 @@ library(unmarked)
 
 ### Get basic model parameters ---------
 # Use PRFAStates_202m2 to calculate the following because PRFA202m2_Data_append has NA's
-num_Year = max(PRFA202m2_Data$BreedingYear) - min(PRFA202m2_Data$BreedingYear) + 1 #15
-num_Site = length(unique(PRFA202m2_Data$TerritoryName)) #43
-num_Rep = max(PRFA202m2_Data$Visit)  # max number of visits within each year
+num_Year = max(PRFA2022_Data$BreedingYear) - min(PRFA2022_Data$BreedingYear) + 1 #15
+num_Site = length(unique(PRFA2022_Data$TerritoryName)) #43
+num_Rep = max(PRFA2022_Data$Visit)  # max number of visits within each year
 # c(num_Year,num_Site,num_Rep) #test
 
 
@@ -35,7 +35,9 @@ modBig00m_fit <- occuMS(detformulas=modBig00m_detformulas,
                         phiformulas=modBig00m_phiformulas, 
                         data=umf_unstacked, parameterization = "multinomial")
 modBig00m_fit
-# modBig00m_phi_predict = predict(modBig00m_fit,type='phi')
+modBig00m_phi_predict = predict(modBig00m_fit,type='phi')
+modBig00m_det_predict = predict(modBig00m_fit,type='det')
+modBig00m_psi_predict = predict(modBig00m_fit,type='psi')
 
 
 ############ modBig01m ########### 
