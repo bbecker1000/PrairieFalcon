@@ -334,6 +334,128 @@ modBig17_stacked_CAUSAL
 
 
 
+
+############ modBig18_stacked_CAUSAL ########### 
+### Set Formulas 
+# State Params
+modBig18_stacked_CAUSAL_psiformulas <- c(
+  '~BreedingYear + AreaType*AnnualVisitors + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + ColdDays + HotDays') #siteCovs on psi and R
+
+# Detection probability
+modBig18_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+
+### Fit Model 
+modBig18_stacked_CAUSAL <- occuMS(detformulas=modBig18_stacked_CAUSAL_detformulas, 
+                                  psiformulas=modBig18_stacked_CAUSAL_psiformulas,
+                                  data=umf_stacked, parameterization = "condbinom")
+modBig18_stacked_CAUSAL
+#coef(modBig18_stacked_CAUSAL)
+
+
+
+############ modBig19_stacked_CAUSAL ########### 
+### Set Formulas 
+# State Params
+modBig19_stacked_CAUSAL_psiformulas <- c(
+  '~AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + ColdDays + HotDays') #siteCovs on psi and R
+
+# Detection probability
+modBig19_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+
+### Fit Model 
+modBig19_stacked_CAUSAL <- occuMS(detformulas=modBig19_stacked_CAUSAL_detformulas, 
+                                  psiformulas=modBig19_stacked_CAUSAL_psiformulas,
+                                  data=umf_stacked, parameterization = "condbinom")
+modBig19_stacked_CAUSAL
+#coef(modBig19_stacked_CAUSAL)
+
+
+
+############ modBig20_stacked_CAUSAL ########### 
+### Set Formulas 
+# State Params
+modBig20_stacked_CAUSAL_psiformulas <- c(
+  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + ColdDays + HotDays') #siteCovs on psi and R
+
+# Detection probability
+modBig20_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+
+### Fit Model 
+modBig20_stacked_CAUSAL <- occuMS(detformulas=modBig20_stacked_CAUSAL_detformulas, 
+                                  psiformulas=modBig20_stacked_CAUSAL_psiformulas,
+                                  data=umf_stacked, parameterization = "condbinom")
+modBig20_stacked_CAUSAL
+#coef(modBig20_stacked_CAUSAL)
+
+
+
+
+############ modBig21_stacked_CAUSAL ########### 
+### Set Formulas 
+# State Params
+modBig21_stacked_CAUSAL_psiformulas <- c(
+  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + DecToFebPrecipitation + HeavyRain + HDD + ColdDays + HotDays') #siteCovs on psi and R
+
+# Detection probability
+modBig21_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+
+### Fit Model 
+modBig21_stacked_CAUSAL <- occuMS(detformulas=modBig21_stacked_CAUSAL_detformulas, 
+                                  psiformulas=modBig21_stacked_CAUSAL_psiformulas,
+                                  data=umf_stacked, parameterization = "condbinom")
+modBig21_stacked_CAUSAL
+#coef(modBig21_stacked_CAUSAL)
+
+
+
+############ modBig22_stacked_CAUSAL ########### 
+### Set Formulas 
+# State Params
+modBig22_stacked_CAUSAL_psiformulas <- c(
+  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
+  '~AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + ColdDays + HotDays') #siteCovs on psi and R
+
+# Detection probability
+modBig22_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+
+### Fit Model 
+modBig22_stacked_CAUSAL <- occuMS(detformulas=modBig22_stacked_CAUSAL_detformulas, 
+                                  psiformulas=modBig22_stacked_CAUSAL_psiformulas,
+                                  data=umf_stacked, parameterization = "condbinom")
+modBig22_stacked_CAUSAL
+#coef(modBig22_stacked_CAUSAL)
+
+
+
+############ modBig23_stacked_CAUSAL ########### 
+### Set Formulas 
+# State Params
+modBig23_stacked_CAUSAL_psiformulas <- c(
+  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + ColdDays + HotDays') #siteCovs on psi and R
+
+# Detection probability
+modBig23_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+
+### Fit Model 
+modBig23_stacked_CAUSAL <- occuMS(detformulas=modBig23_stacked_CAUSAL_detformulas, 
+                                  psiformulas=modBig23_stacked_CAUSAL_psiformulas,
+                                  data=umf_stacked, parameterization = "condbinom")
+modBig23_stacked_CAUSAL
+#coef(modBig23_stacked_CAUSAL)
+
+
+
+
+
+
+
+
+
 # ############ modBig01m_stacked_CAUSAL ########### 
 # # Rain before, temp before
 # ### Set Formulas 

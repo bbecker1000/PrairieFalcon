@@ -83,10 +83,9 @@ table(Surveys_per_Location_per_Year$surveys) # most are 3-5
 yColor <- ifelse(PRFAStates_2022$Area_Type == "Core", "plain", "bold.italic")
 PlotStates_2022<- ggplot(PRFAStates_2022, aes(x = DaySinceDec15th, y = fct_rev(as_factor(TerritoryName)), fill = as.factor(finalState))) + 
   geom_point(shape = 21)+
-  scale_fill_manual(values = c("white", "grey", "black")) + 
+  scale_fill_manual(values = c("white", "burlywood", "red4")) + 
   facet_grid(cols = vars(BreedingYear))+
   labs(fill = "States") +
-  theme_minimal() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), 
         axis.text.y = element_text(face = yColor),
         axis.title.y = element_blank())+
@@ -203,5 +202,18 @@ ggplot(average_chicks_per_year, aes(x=BreedingYear, y=AvgFledge, label = AvgFled
         axis.title.y = element_text(size = 12),
         axis.text.x =  element_text(size = 10),
         axis.text.y =  element_text(size = 10))  
+
+
+
+###### BreedingYear vs. PEFA #####
+data = umf_stacked@siteCovs %>% 
+  select(BreedingYear, PEFA) %>% 
+  mutate(Site = factor(rep(c(1:43), each = 15))) %>% 
+  add_count(Site, PEFA, wt = NULL)
+
+ggplot(data, aes(x=BreedingYear, y=PEFA)) +
+  geom_jitter()+
+  scale_x_continuous(n.breaks = 14)
+
 
 

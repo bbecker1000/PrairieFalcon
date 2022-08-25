@@ -149,7 +149,7 @@ ggplot(AnnualAvgPredicted, aes(x= YearDate, y = meanPsi2,
 ## Please update to multinomial. - BB 2022-08-12
 
 
-##### Prepare predicted data - conditional binomial #####
+##### Prepare predicted data (psi1/psi2) - conditional binomial #####
 # Yearly average 
 AnnualAvgPredicted_condbinom = BEST_MODEL_state_params %>% 
   mutate(Territory = PEFACovs$TerritoryName,
@@ -165,7 +165,7 @@ AnnualAvgPredicted_condbinom = BEST_MODEL_state_params %>%
             low.psi2 = quantile(psi2, 0.025),) %>% 
   mutate(WinterPrecip = DecToFebTotal$Total)
 
-##### Plot average predictions by Area Type by Year - cndbinom #####
+##### Plot average predictions by Area Type by Year (psi1/psi2) - cndbinom #####
 ggplot(AnnualAvgPredicted_condbinom, aes(x= YearDate, y = meanPsi1, group  = AreaType, color = AreaType, label= round(meanPsi1,2)))+
   geom_line(aes(linetype=AreaType))+
   geom_point(aes(shape=AreaType), size = 3)+
@@ -217,6 +217,78 @@ ggplot(AnnualAvgPredictedPsi2_condbinom, aes(x= YearDate, y = meanPsi2))+
     axis.title.y = element_text(size = 12),
     axis.text.x = element_text(size = 10),
     axis.text.y = element_text(size = 10)) 
+
+
+
+
+##### Prepare predicted data (psi/R) - conditional binomial #####
+# Yearly average 
+AnnualAvgPredicted_condbinom.psi.R = BEST_MODEL_state_params %>% 
+  mutate(Territory = PEFACovs$TerritoryName,
+         AreaType = PRFADetectHistory_2022_stacked$Area_Type,
+         BreedingYear = rep(2007:2021, time = 43),
+         YearDate = ymd(rep(2007:2021, time = 43), truncated = 2L)) %>% 
+  group_by(AreaType, YearDate) %>% 
+  summarise(meanPsi =  mean(psi),
+            high.psi = quantile(psi, 0.975),
+            low.psi = quantile(psi, 0.025),
+            meanR =  mean(R),
+            high.R = quantile(R, 0.975),
+            low.R = quantile(R, 0.025),) 
+
+##### Plot average predictions by Area Type by Year (psi/R) - cndbinom #####
+ggplot(AnnualAvgPredicted_condbinom.psi.R, aes(x= YearDate, y = meanPsi, group  = AreaType, color = AreaType, label= round(meanPsi,2)))+
+  geom_line(aes(linetype=AreaType))+
+  geom_point(aes(shape=AreaType), size = 3)+
+  geom_errorbar(aes(ymin=low.psi, ymax=high.psi), width = 150, size = 0.6, position = position_dodge(.5)) +
+  scale_x_date(breaks = scales::breaks_pretty(15))+
+  scale_y_continuous(breaks = scales::breaks_pretty(8))+  
+  labs(title="Yearly Average Predicted Psi by Area Type", x="Year", y = "psi",
+       subtitle = "with the 2.5th percentile and 97.5th percentile")+
+  ylim(0,1)+
+  scale_shape_manual(values=c(15, 17))+
+  scale_linetype_manual(values  = c("solid", "dashed"))+
+  scale_color_manual(values=c('#E69F00','#999999')) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 13, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 10, hjust = 0.5),
+    axis.title.x = element_text(size = 12),
+    axis.title.y = element_text(size = 12),
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_text(size = 10)) 
+
+# R
+AnnualAvgPredictedR_condbinom = BEST_MODEL_state_params %>% 
+  mutate(Territory = PEFACovs$TerritoryName,
+         BreedingYear = rep(2007:2021, time = 43),
+         YearDate = ymd(rep(2007:2021, time = 43), truncated = 2L)) %>% 
+  group_by(YearDate) %>% 
+  summarise(meanR =  mean(R),
+            high.R = quantile(R, 0.975),
+            low.R = quantile(R, 0.025),) 
+
+ggplot(AnnualAvgPredictedR_condbinom, aes(x= YearDate, y = meanR))+
+  geom_line()+
+  geom_point(size = 3)  +
+  geom_errorbar(aes(ymin=low.R, ymax=high.R), width = 150, size = 0.6, position = position_dodge(.5)) +
+  scale_x_date(breaks = scales::breaks_pretty(15))+
+  scale_y_continuous(breaks = scales::breaks_pretty(8))+  
+  labs(title="Yearly Average Predicted R by Area Type", x="Year", y = "R",
+       subtitle = "with the 2.5th percentile and 97.5th percentile")+
+  ylim(0,1)+
+  scale_shape_manual(values=c(15, 17))+
+  scale_linetype_manual(values  = c("solid", "dashed"))+
+  scale_color_manual(values=c('#E69F00','#999999')) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 13, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 10, hjust = 0.5),
+    axis.title.x = element_text(size = 12),
+    axis.title.y = element_text(size = 12),
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_text(size = 10)) 
+
 
 
 ##### Plot psi2 predictions with Winter Precipitation by Year - multinomial #####
