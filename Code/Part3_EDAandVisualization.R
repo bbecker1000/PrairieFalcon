@@ -7,7 +7,11 @@
 source("Code/Part2_DatasetPrep.R")
 
 ###### Exploratory Data Analysis & Visualization #######
-
+test = PRFASurveys_2022 %>% 
+  group_by(BreedingYear, TerritoryName, Area_Type) %>% 
+  summarize(count = n()) %>% 
+  group_by(Area_Type) %>% 
+  summarize(Avg = mean(count))
 ### Yearly PRFA Surveys per Site by Area Type -------
 # Avg number of visits each year each area type - core vs non-core (code from Sarah)
 SurveyAreaType_2022 <- PRFASurveys_2022 %>%
@@ -42,16 +46,15 @@ Surveys_per_Location <- PRFAStates_2022 %>%
 
 ### Number of UNPOOLED surveys for each site each year ---------
 Surveys_per_Location_per_Year  = PRFAStates_2022 %>% 
-  group_by(TerritoryName,BreedingYear)  %>%
+  group_by(TerritoryName,Area_Type, BreedingYear)  %>%
   summarize(surveys = n())
 # add %>% pivot_wider(names_from = BreedingYear, values_from = n, values_fill= 0) to make into wide format
 ggplot(Surveys_per_Location_per_Year, aes(x=surveys)) + 
-  geom_histogram(binwidth = 1,color="black", fill="grey")+
+  geom_histogram(binwidth = 1,aes(fill=Area_Type))+
   theme_minimal()+
   scale_x_continuous(breaks = scales::breaks_pretty(6))+
   labs(title="Dsitribution of Number of Surveys per Territory per Year",
-       x = 'Number of Surveys',
-       y = 'Breeding Year')+
+       x = 'Number of Surveys')+
   theme(
     plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
     axis.title.x = element_text(size = 15),
@@ -215,5 +218,10 @@ ggplot(data, aes(x=BreedingYear, y=PEFA)) +
   geom_jitter()+
   scale_x_continuous(n.breaks = 14)
 
+Year.PEFA = umf_stacked@siteCovs %>% 
+  select(BreedingYear, PEFA, AreaType)
 
+m = glm(PEFA ~ BreedingYear+ (1|AreaType), family = binomial, data = Year.PEFA)
+summary(m)
+plot(m)
 

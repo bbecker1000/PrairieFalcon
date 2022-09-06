@@ -1,26 +1,36 @@
+######################################################################################################
+## Project: Falcon Occupancy Analysis 2022
+## Script Purpose: Code assess goodness of fit of the best model in multinomial
+## Libraries and versions used: unmarked
+#####################################################################################################
+
+source("Code/Part6f_FitBigStaticCausalModels.R")
+library(unmarked)
+
 ### Goodness of fit statistics
 
 # AICcmodavg::mb.gof.test(mod04b_stacked_fit) # doesn't work with occuMS()
 # residuals
 
-BEST_MODEL <- modBig01m_stacked_CAUSAL
+# BEST_MODEL_multi defined at the bottom of part 6f
 
-plot(BEST_MODEL) #nothing too crazy
+plot(BEST_MODEL_multi) #nothing too crazy
 
 
 ## trying patch from Ken Kellner to run ranef and parpoot on model with NAs (2022-07-26)
 source("Code/occuMS_patch.R") 
-ranef(BEST_MODEL)  # Works !
-parboot(BEST_MODEL) # works !
+posteriroDist = ranef(BEST_MODEL_multi)# Works !
+# bup(posteriroDist) extract mean
+parboot(BEST_MODEL_multi) # error?
 
 # Stats for parboot to fit
 # basically want chi.sq and c-hat
 # function
-fitstats <- function(BEST_MODEL, 
+fitstats <- function(BEST_MODEL_multi, 
                      method = "nonparboot") {
-  observed <- getY(BEST_MODEL@data)
-  expected <- fitted(BEST_MODEL)
-  resids <- residuals(BEST_MODEL,
+  observed <- getY(BEST_MODEL_multi@data)
+  expected <- fitted(BEST_MODEL_multi)
+  resids <- residuals(BEST_MODEL_multi,
                       method = "nonparboot")
   sse <- sum(resids^2,
              na.rm = TRUE)
@@ -37,7 +47,7 @@ fitstats <- function(BEST_MODEL,
 
 
 #run parboot
-pb <- parboot(BEST_MODEL,
+pb <- parboot(BEST_MODEL_multi,
               fitstats,
               nsim = 100,
               report = TRUE,
@@ -62,13 +72,13 @@ cHat_pb
 ## cross val
 #k-fold cross validation with 10 folds
 # require multinom
-(kfold = crossVal(BEST_MODEL, method="Kfold", folds=20))
+(kfold = crossVal(BEST_MODEL_multi, method="Kfold", folds=20))
 
 #holdout method
-(holdout = crossVal(BEST_MODEL,method='holdout', holdoutPct=0.25))
+(holdout = crossVal(BEST_MODEL_multi,method='holdout', holdoutPct=0.25))
 
 #Leave-one-out method
-(leave = crossVal(BEST_MODEL, method='leaveOneOut'))
+(leave = crossVal(BEST_MODEL_multi, method='leaveOneOut'))
 
 # When the sign of a coefficient is not what one expects (or actually even if that is not the case), 
 # one can check to see if the rank of the hessian is equal to the number of parameters in the model.  
@@ -77,7 +87,7 @@ cHat_pb
 # The quick way to check on that is to use the following on the result from colext
 # (and even occu and several other unmarked functions).  If that result is named fm, then execute the following:
 
-qr(BEST_MODEL@opt$hessian)$rank - length(BEST_MODEL@opt$par) 
+qr(BEST_MODEL_multi@opt$hessian)$rank - length(BEST_MODEL_multi@opt$par) 
 
 # If this is less than zero, you have problems. 
 

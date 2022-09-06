@@ -63,6 +63,7 @@ plot(DAG_PRFA)
 # Psi
 DAG_modBig_psi <- dagitty("dag{ 
   BreedingYear -> Psi;
+  BreedingYear -> PEFA;
   AreaType -> Psi;    
   Visitor -> Psi;  
   PEFA -> Psi;
@@ -81,7 +82,7 @@ DAG_modBig_psi <- dagitty("dag{
   Psi [outcome]
   VegU [unobserved]
                      }")
-coordinates(DAG_modBig_psi) <- list(x=c(BreedingYear=1,AreaType=2,Visitor=3,PEFA=4,WinterPrecip=5,ShortDrought=5, LongDrought =5, Psi = 3, VegU= 4, PreyU = 4),
+coordinates(DAG_modBig_psi) <- list(x=c(BreedingYear=3,AreaType=1,Visitor=2,PEFA=5,WinterPrecip=5,ShortDrought=5, LongDrought =5, Psi = 3, VegU= 4, PreyU = 4),
                                     y=c(BreedingYear=4,AreaType=4,Visitor=4,PEFA=4,WinterPrecip=3,ShortDrought=2, LongDrought =1, Psi = 2, VegU=2, PreyU = 1))
 plot(DAG_modBig_psi)
 
@@ -94,6 +95,7 @@ impliedConditionalIndependencies(DAG_modBig_psi)
 
 DAG_modBig_R <- dagitty("dag{ 
   BreedingYear -> R;
+  BreedingYear -> PEFA;
   AreaType -> R;    
   Visitor -> R;  
   PEFA -> R;
@@ -123,11 +125,29 @@ DAG_modBig_R <- dagitty("dag{
   VegU [unobserved]
   EctoparasiteU [unobserved]
                      }")
-coordinates(DAG_modBig_R) <- list(x=c(BreedingYear=1,AreaType=2,Visitor=3,PEFA=4,WinterPrecip=5,ShortDrought=5, LongDrought =5,RainDuringBreeding = 4,EctoparasiteU = 4,R = 3, WinterTemp = 2, PreyU = 3, MinTempDuringBreeding = 1,MaxTempDuringBreeding = 1, VegU = 4),
+coordinates(DAG_modBig_R) <- list(x=c(BreedingYear=3,AreaType=1,Visitor=2,PEFA=5,WinterPrecip=5,ShortDrought=5, LongDrought =5,RainDuringBreeding = 4,EctoparasiteU = 4,R = 3, WinterTemp = 2, PreyU = 3, MinTempDuringBreeding = 1,MaxTempDuringBreeding = 1, VegU = 4),
                                     y=c(BreedingYear=5,AreaType=5,Visitor=5,PEFA=5,WinterPrecip=4,ShortDrought=3, LongDrought =2,RainDuringBreeding = 1,EctoparasiteU = 2,R = 3, WinterTemp = 1, PreyU = 2, MinTempDuringBreeding = 2,MaxTempDuringBreeding = 3, VegU= 3))
 
 plot(DAG_modBig_R)
 impliedConditionalIndependencies(DAG_modBig_R)
+
+
+# DAG_modBig_phi <- dagitty("dag{ 
+#   AreaType -> 
+#   LongDrought -> ShortDrought
+#   BreedingYear [exposure]
+#   AreaType [exposure]
+#   Visitor [exposure]
+#   PEFA [exposure]
+#   WinterPrecip [exposure]
+#   ShortDrought [exposure]
+#   LongDrought [exposure]
+#   Psi [outcome]
+#   VegU [unobserved]
+#                      }")
+# coordinates(DAG_modBig_psi) <- list(x=c(BreedingYear=3,AreaType=1,Visitor=2,PEFA=5,WinterPrecip=5,ShortDrought=5, LongDrought =5, Psi = 3, VegU= 4, PreyU = 4),
+#                                     y=c(BreedingYear=4,AreaType=4,Visitor=4,PEFA=4,WinterPrecip=3,ShortDrought=2, LongDrought =1, Psi = 2, VegU=2, PreyU = 1))
+# plot(DAG_modBig_psi)
 
 
 

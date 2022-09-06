@@ -15,9 +15,27 @@ PEFADets_2022<-PEFA_2022 %>%
   summarise(PEFADet=mean(Detection))%>%
   mutate(PEFADet=ifelse(PEFADet>0, 1, 0))
 
+# Create categorized PEFA Detection by Year to use a s covariate for PRFA
+# 0 - not seen, 1 - adults only, 2 - Fledglings/nestlings/egg (as factors)
+PEFA_class <- PEFA_2022 %>% 
+  mutate(AdultCount = coalesce(AdultCount,0),
+         FledglingCount = coalesce(FledglingCount, 0),
+         NestlingCount = coalesce(NestlingCount, 0),
+         EggCountCode = coalesce(EggCountCode, "0")) %>% 
+  mutate(State=ifelse(
+  (FledglingCount>0) | (NestlingCount >0) | (EggCountCode != "0"), 2, ifelse(
+    AdultCount != 0, 1, 0))) %>% 
+  group_by(TerritoryName, BreedingYear) %>% 
+  summarise(PEFAState =  max(State)) 
+
+
 # Merge Annual PEFA Detections with PRFASurveys
-PRFASurveys_2022<-left_join(PRFASurveys_2022, PEFADets_2022, by=c("TerritoryName", "BreedingYear"))%>%
+PRFASurveys_2022<-left_join(PRFASurveys_2022, PEFADets_2022, by= c("TerritoryName", "BreedingYear"))%>%
   mutate(PEFADet=coalesce(PEFADet, 0))
+
+# Merge categorized Annual PEFA Detections with PRFASurveys
+PRFASurveys_2022<-left_join(PRFASurveys_2022, PEFA_class, by=c("TerritoryName", "BreedingYear"))%>%
+  mutate(PEFAState=coalesce(PEFAState, 0))
 
 # Create PEFA covariate data (territories as rows, years as cols)
 PEFACov_2022<-PRFASurveys_2022 %>%
@@ -28,6 +46,15 @@ PEFACov_2022<-PRFASurveys_2022 %>%
   spread("BreedingYear", "PEFADet", "0") # same as pivot_wider()
 colnames(PEFACov_2022)[2:20]<-paste("PEFA",colnames(PEFACov_2022)[2:20], sep="")
 rm(PEFADets_2022)
+
+PEFAState_2022<-PRFASurveys_2022 %>%
+  select(BreedingYear, TerritoryName, PEFAState)%>%
+  group_by(BreedingYear,TerritoryName)%>%
+  summarise(PEFAState = max(PEFAState))%>%
+  arrange(TerritoryName, BreedingYear)%>%
+  spread("BreedingYear", "PEFAState", "0") # same as pivot_wider()
+colnames(PEFAState_2022)[2:20]<-paste("PEFAState",colnames(PEFAState_2022)[2:20], sep="")
+rm(PEFA_class)
 
 
 ### Assign the initial state for each observation -------

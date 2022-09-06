@@ -237,7 +237,7 @@ AnnualAvgPredicted_condbinom.psi.R = BEST_MODEL_state_params %>%
             low.R = quantile(R, 0.025),) 
 
 ##### Plot average predictions by Area Type by Year (psi/R) - cndbinom #####
-ggplot(AnnualAvgPredicted_condbinom.psi.R, aes(x= YearDate, y = meanPsi, group  = AreaType, color = AreaType, label= round(meanPsi,2)))+
+ggplot(AnnualAvgPredicted_condbinom.psi.R, aes(x= YearDate, y = meanPsi, group  = AreaType, label= round(meanPsi,2)))+
   geom_line(aes(linetype=AreaType))+
   geom_point(aes(shape=AreaType), size = 3)+
   geom_errorbar(aes(ymin=low.psi, ymax=high.psi), width = 150, size = 0.6, position = position_dodge(.5)) +
