@@ -77,8 +77,9 @@ cHat_pb
 #holdout method
 (holdout = crossVal(BEST_MODEL_multi,method='holdout', holdoutPct=0.25))
 
-#Leave-one-out method
-(leave = crossVal(BEST_MODEL_multi, method='leaveOneOut'))
+#Leave-one-out method 
+# won't run with best model?
+#(leave = crossVal(BEST_MODEL_multi, method='leaveOneOut'))
 
 # When the sign of a coefficient is not what one expects (or actually even if that is not the case), 
 # one can check to see if the rank of the hessian is equal to the number of parameters in the model.  
