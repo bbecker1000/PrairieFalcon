@@ -15,7 +15,7 @@ source("Code/Part6f_FitBigStaticCausalModels_multi.R")
 # adding BEST_MODEL
 
 
-predicted_psi1 = BEST_MODEL_psi_predict$`psi[1]` # changed to BEST_MODEL
+predicted_psi1 = BEST_MODEL_psi_predict$`psi[1]` # changed to BEST_MODEL  if multi the psi[1]
 predicted_psi1 = predicted_psi1 %>% 
   rename(
     Psi1 = Predicted,
@@ -29,7 +29,7 @@ predicted_psi1 = predicted_psi1 %>%
          YearDate = ymd(rep(2007:2021, time = 43), truncated = 2L))
   
 # Psi2
-predicted_psi2 = BEST_MODEL_psi_predict$`psi[2]` # changed to BEST_MODEL
+predicted_psi2 = BEST_MODEL_psi_predict$`psi[2]` # changed to BEST_MODEL  # if multi then `psi[2]`
 predicted_psi2 = predicted_psi2 %>% 
   rename(
     Psi2 = Predicted,
@@ -404,3 +404,36 @@ p1.Core.psi <- ggplot(WinterRain_Core_PEFA.df.psi, aes(Core, Predicted)) +
 p1.Core.psi
 
 # --------------------------------------------------------------
+
+## marginal effects plots 2022-09-11 BB
+
+# psi and p as functions of vegetation height
+newdata2 <- data.frame(BreedingYear=seq(-2, 2, length=50),
+                       AreaType=factor(rep(c("0", "1"), each = 25)),               
+                       AnnualVisitors=seq(-2, 2, length=50),
+                       DecToFebPrecipitation=seq(-2, 2, length=50),
+                       PEFAState =factor(c(rep("0",17), rep("1",17), rep("2", 16))),
+                       HeavyRain=seq(-2, 2, length=50),
+                       HDD=seq(-2, 2, length=50),
+                       HotDays=seq(-2, 2, length=50)
+                       )
+
+psi.predict <- predict(BEST_MODEL, type="psi", newdata=newdata2, appendData=TRUE)
+
+
+
+plot(Predicted~newdata2$DecToFebPrecipitation, psi.predict$R, type="l", lwd=2, ylim=c(0,1),
+     xlab="WinterRain (standardized)",
+     ylab=expression(paste("Probability of occurrence (", psi, ")")))
+lines(lower ~ newdata2$DecToFebPrecipitation, psi.predict$R, col=gray(0.7))
+lines(upper ~ newdata2$DecToFebPrecipitation, psi.predict$R, col=gray(0.7))
+plot(Predicted~veght, Ep, type="l", lwd=2, ylim=c(0,1),
+     xlab="Vegetation height (standardized)",
+     ylab=expression(paste("Detection probability (", italic(p), ")")))
+lines(lower~veght, Ep, col=gray(0.7))
+lines(upper~veght, Ep, col=gray(0.7))
+
+
+
+
+
