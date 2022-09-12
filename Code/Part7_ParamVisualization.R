@@ -405,33 +405,32 @@ p1.Core.psi
 
 # --------------------------------------------------------------
 
-## marginal effects plots 2022-09-11 BB
-
-# psi and p as functions of vegetation height
-newdata2 <- data.frame(BreedingYear=seq(-2, 2, length=50),
-                       AreaType=factor(rep(c("0", "1"), each = 25)),               
-                       AnnualVisitors=seq(-2, 2, length=50),
-                       DecToFebPrecipitation=seq(-2, 2, length=50),
-                       PEFAState =factor(c(rep("0",17), rep("1",17), rep("2", 16))),
-                       HeavyRain=seq(-2, 2, length=50),
-                       HDD=seq(-2, 2, length=50),
-                       HotDays=seq(-2, 2, length=50)
-                       )
-
-psi.predict <- predict(BEST_MODEL, type="psi", newdata=newdata2, appendData=TRUE)
+## marginal effects plots 2022-09-12 BB
 
 
+#Generate predicted values
+psi.predictions <- predict(BEST_MODEL, type='psi')
 
-plot(Predicted~newdata2$DecToFebPrecipitation, psi.predict$R, type="l", lwd=2, ylim=c(0,1),
-     xlab="WinterRain (standardized)",
-     ylab=expression(paste("Probability of occurrence (", psi, ")")))
-lines(lower ~ newdata2$DecToFebPrecipitation, psi.predict$R, col=gray(0.7))
-lines(upper ~ newdata2$DecToFebPrecipitation, psi.predict$R, col=gray(0.7))
-plot(Predicted~veght, Ep, type="l", lwd=2, ylim=c(0,1),
-     xlab="Vegetation height (standardized)",
-     ylab=expression(paste("Detection probability (", italic(p), ")")))
-lines(lower~veght, Ep, col=gray(0.7))
-lines(upper~veght, Ep, col=gray(0.7))
+#plot against WinterRain
+WinterRain <- umf_stacked@siteCovs[["DecToFebPrecipitation"]]
+
+df <- data.frame(WinterRain, psi.predictions)
+
+ggplot(df, aes(WinterRain, R.Predicted)) +
+  geom_point() +
+  geom_ribbon(aes(ymin = R.lower, ymax = R.upper), alpha = 0.2)
+
+with(df, plot(WinterRain, R.Predicted))
+  
+
+
+
+
+
+
+
+
+
 
 
 
