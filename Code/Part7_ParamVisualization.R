@@ -15,7 +15,7 @@ source("Code/Part6f_FitBigStaticCausalModels_multi.R")
 # adding BEST_MODEL
 
 
-predicted_psi1 = BEST_MODEL_psi_predict$`psi[1]` # changed to BEST_MODEL  if multi the psi[1]
+predicted_psi1 = BEST_MODEL_psi_predict$`psi` # changed to BEST_MODEL  if multi the psi[1] or use psi for condbinom
 predicted_psi1 = predicted_psi1 %>% 
   rename(
     Psi1 = Predicted,
@@ -29,7 +29,7 @@ predicted_psi1 = predicted_psi1 %>%
          YearDate = ymd(rep(2007:2021, time = 43), truncated = 2L))
   
 # Psi2
-predicted_psi2 = BEST_MODEL_psi_predict$`psi[2]` # changed to BEST_MODEL  # if multi then `psi[2]`
+predicted_psi2 = BEST_MODEL_psi_predict$`R` # changed to BEST_MODEL  # if multi then `psi[2]`
 predicted_psi2 = predicted_psi2 %>% 
   rename(
     Psi2 = Predicted,
@@ -323,11 +323,13 @@ ggplot(df, aes(x= YearDate, y = values, group  = variables, color = variables))+
 dataPred = umf_stacked@siteCovs
 df = dataPred %>% summarise_if(is.numeric, mean)
 
-occuPred <- predict(modBig01_stacked_fit,
+occuPred <- predict(BEST_MODEL,
                     type = "psi",
                     newdata = dataPred,
                     na.rm = TRUE,
                     inf.rm = TRUE)
+
+
 
 
 
@@ -417,16 +419,15 @@ WinterRain <- umf_stacked@siteCovs[["DecToFebPrecipitation"]]
 df <- data.frame(WinterRain, psi.predictions)
 
 ggplot(df, aes(WinterRain, R.Predicted)) +
-  geom_point() +
-  geom_ribbon(aes(ymin = R.lower, ymax = R.upper), alpha = 0.2)
+  geom_jitter() +
+  geom_ribbon(aes(ymin = R.Predicted-1.96*R.SE, ymax = R.Predicted+1.96*R.SE), alpha = 0.2)
 
-with(df, plot(WinterRain, R.Predicted))
+
+
+
   
 
-
-
-
-
+  
 
 
 
