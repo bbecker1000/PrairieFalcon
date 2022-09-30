@@ -331,8 +331,6 @@ occuPred <- predict(BEST_MODEL,
 
 
 
-
-
 ######### plot covariate effects ---------------------------------------
 
 preddata.model <- predict(BEST_MODEL, type = "psi", appendData = TRUE, level = 0.95)  
@@ -425,14 +423,45 @@ ggplot(df, aes(WinterRain, R.Predicted)) +
 
 
 
-  
 
-  
+## plot of total occupied and reproductive sites
+## multiple by # sites
+## quick and dirty for now.  this needs to be fixed to account for core and non-core hen doing Psi.
+
+PRFA_2022 %>%
+    group_by(Area_Type) %>%
+      summarise(count = n_distinct(TerritoryName))
+
+N_Core_territories <- 27
+N_Non_Core_territories <- 16
+
+print(AnnualAvgPredicted_condbinom.psi.R, n = 43)
+AnnualAvgPredicted_condbinom.psi.R$Territories <- ifelse(AnnualAvgPredicted_condbinom.psi.R$AreaType == "Core", 
+                                                         N_Core_territories,
+                                                         N_Non_Core_territories)
+BEST_MODEL_state_params.sum_plot = data.frame(
+  psi.predicted = BEST_MODEL_psi_predict$psi$Predicted,
+  psi.lower = BEST_MODEL_psi_predict$psi$lower,
+  psi.upper = BEST_MODEL_psi_predict$psi$upper,
+  R.predicted = BEST_MODEL_psi_predict$R$Predicted,
+  R.lower = BEST_MODEL_psi_predict$R$lower,
+  R.upper = BEST_MODEL_psi_predict$R$upper)
 
 
+BEST_MODEL_state_params.sum_plot %>% 
+       mutate(Territory = PEFACovs$TerritoryName,
+       BreedingYear = rep(2007:2021, time = 43),
+       YearDate = ymd(rep(2007:2021, time = 43), truncated = 2L)) %>% 
+  group_by(YearDate) %>% 
+  summarise(psi.predicted =  mean(psi.predicted),
+            psi.lower = mean(psi.lower),
+            psi.upper = mean(psi.lower),
+            R.predicted =  mean(R.predicted),
+            R.lower = mean(R.lower),
+            R.upper = mean(R.lower)) 
 
 
-
+A
 
 
 
