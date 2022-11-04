@@ -6,7 +6,8 @@
 
 source("Code/Part6c_FitBigStaticModels.R")
 source("Code/Part6e_FitBigStaticModels_multi.R")
-source("Code/Part6f_FitBigStaticCausalModels_multi.R")
+source("Code/Part6f_FitBigStaticCausalModels.R")
+library(cowplot)
 
 ##### Prepare predicted data - multinomial #####
 ### Using the best stacked static multinomial model modBig11m_stacked_fit
@@ -232,31 +233,37 @@ AnnualAvgPredicted_condbinom.psi.R = BEST_MODEL_state_params %>%
   summarise(meanPsi =  mean(psi),
             high.psi = quantile(psi, 0.975),
             low.psi = quantile(psi, 0.025),
+            meanPsiCI.lower = mean(psiCI.lower),
+            meanPsiCI.upper = mean(psiCI.upper),
             meanR =  mean(R),
             high.R = quantile(R, 0.975),
-            low.R = quantile(R, 0.025),) 
+            low.R = quantile(R, 0.025),
+            meanRCI.lower= mean(RCI.lower),
+            meanRCI.upper = mean(RCI.upper)) 
+
 
 ##### Plot average predictions by Area Type by Year (psi/R) - cndbinom #####
-ggplot(AnnualAvgPredicted_condbinom.psi.R, aes(x= YearDate, y = meanPsi, group  = AreaType, label= round(meanPsi,2)))+
+psi <- ggplot(AnnualAvgPredicted_condbinom.psi.R, aes(x= YearDate, y = meanPsi, group  = AreaType, label= round(meanPsi,2)))+
   geom_line(aes(linetype=AreaType))+
-  geom_point(aes(shape=AreaType), size = 3)+
-  geom_errorbar(aes(ymin=low.psi, ymax=high.psi), width = 150, size = 0.6, position = position_dodge(.5)) +
-  scale_x_date(breaks = scales::breaks_pretty(15))+
-  scale_y_continuous(breaks = scales::breaks_pretty(8))+  
-  labs(title="Yearly Average Predicted Psi by Area Type", x="Year", y = "psi",
-       subtitle = "with the 2.5th percentile and 97.5th percentile")+
+  geom_point(aes(shape=AreaType), size = 3, position = "dodge")+
+  geom_errorbar(aes(ymin=meanPsiCI.lower, ymax=meanPsiCI.upper), width = 150, size = 0.6, position = "dodge") +
+  scale_x_date(breaks = scales::breaks_pretty(5))+
+  labs(title="Yearly Average Predicted Psi by Area Type", x="Year", y = "psi",subtitle = "with mean the 95% CI")+
   ylim(0,1)+
   scale_shape_manual(values=c(15, 17))+
   scale_linetype_manual(values  = c("solid", "dashed"))+
-  scale_color_manual(values=c('#E69F00','#999999')) +
+  scale_color_manual(values=c('#E69F00','#999999')) + 
   theme_minimal() +
   theme(
-    plot.title = element_text(size = 13, face = "bold", hjust = 0.5),
-    plot.subtitle = element_text(size = 10, hjust = 0.5),
-    axis.title.x = element_text(size = 12),
-    axis.title.y = element_text(size = 12),
-    axis.text.x = element_text(size = 10),
-    axis.text.y = element_text(size = 10)) 
+    plot.title = element_text(size = 17, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 14, hjust = 0.5),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text.x = element_text(size = 13),
+    axis.text.y = element_text(size = 13),
+    legend.position = c(0.9, 0.8),
+    legend.title=element_text(size=15),
+    legend.text=element_text(size=13)) 
 
 # R
 AnnualAvgPredictedR_condbinom = BEST_MODEL_state_params %>% 
@@ -266,34 +273,37 @@ AnnualAvgPredictedR_condbinom = BEST_MODEL_state_params %>%
   group_by(YearDate) %>% 
   summarise(meanR =  mean(R),
             high.R = quantile(R, 0.975),
-            low.R = quantile(R, 0.025),) 
+            low.R = quantile(R, 0.025),
+            meanRCI.lower= mean(RCI.lower),
+            meanRCI.upper = mean(RCI.upper)) 
 
-ggplot(AnnualAvgPredictedR_condbinom, aes(x= YearDate, y = meanR))+
+R <- ggplot(AnnualAvgPredictedR_condbinom, aes(x= YearDate, y = meanR))+
   geom_line()+
   geom_point(size = 3)  +
-  geom_errorbar(aes(ymin=low.R, ymax=high.R), width = 150, size = 0.6, position = position_dodge(.5)) +
-  scale_x_date(breaks = scales::breaks_pretty(15))+
+  geom_errorbar(aes(ymin=meanRCI.lower, ymax=meanRCI.upper), width = 150, size = 0.6, position = position_dodge(.5)) +
+  scale_x_date(breaks = scales::breaks_pretty(5))+
   scale_y_continuous(breaks = scales::breaks_pretty(8))+  
-  labs(title="Yearly Average Predicted R by Area Type", x="Year", y = "R",
-       subtitle = "with the 2.5th percentile and 97.5th percentile")+
+  labs(title="Yearly Average Predicted R", x="Year", y = "R",
+       subtitle = "with mean 95% CI")+
   ylim(0,1)+
   scale_shape_manual(values=c(15, 17))+
   scale_linetype_manual(values  = c("solid", "dashed"))+
   scale_color_manual(values=c('#E69F00','#999999')) +
   theme_minimal() +
   theme(
-    plot.title = element_text(size = 13, face = "bold", hjust = 0.5),
-    plot.subtitle = element_text(size = 10, hjust = 0.5),
-    axis.title.x = element_text(size = 12),
-    axis.title.y = element_text(size = 12),
-    axis.text.x = element_text(size = 10),
-    axis.text.y = element_text(size = 10)) 
+    plot.title = element_text(size = 17, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 14, hjust = 0.5),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text.x = element_text(size = 13),
+    axis.text.y = element_text(size = 13)) 
 
-
+top_row <- plot_grid(psi, R, labels = c('(a)', '(b)'), label_size = 18, rel_widths = c(1, 1))
 
 ##### Plot psi2 predictions with Winter Precipitation by Year - multinomial #####
 
 df= AnnualAvgPredicted %>% pivot_longer(cols = c('meanPsi2','WinterPrecip'), names_to = 'variables',values_to = 'values')
+
 
 ggplot(df, aes(x= YearDate, y = values, group  = variables, color = variables))+
   geom_line(aes(linetype=variables))+
@@ -361,16 +371,22 @@ WinterRain_Core_PEFA.df.R$Core <- ifelse(WinterRain_Core_PEFA.df.R$Core == "0", 
 WinterRain_Core_PEFA.df.psi$Core <- ifelse(WinterRain_Core_PEFA.df.psi$Core == "0", "Non-core", "Core") 
 
 # replace 1 with PEFA present and 0 with PEFA absent
-WinterRain_Core_PEFA.df.R$PEFA <- ifelse(WinterRain_Core_PEFA.df.R$PEFA == "0", "PEFA absent", "PEFA present") 
+WinterRain_Core_PEFA.df.R$PEFA <- ifelse(WinterRain_Core_PEFA.df.R$PEFA == "0", "PEFA absent", ifelse(WinterRain_Core_PEFA.df.R$PEFA == "1", "PEFA present", "PEFA breeding"))
 
 
 ## plot Winter Rain vs R
 p1.WinterRain.R <- ggplot(WinterRain_Core_PEFA.df.R, aes(WinterRain, Predicted)) + 
   geom_smooth(method = "loess") + 
   geom_jitter() +
-  xlab("Winter Rainfall") + ylab("Conditional R") +
+  xlab("Winter Rainfall") + ylab("R") +
   #geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.1, data = WinterRain.df.R)+
-  ylim(0,1) + theme_minimal()
+  ylim(0,1) + theme_minimal() +
+  labs( x="Normalized Winter Precipitation", y = "R")+
+  theme(
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text.x = element_text(size = 13),
+    axis.text.y = element_text(size = 13)) 
 p1.WinterRain.R
 
 
@@ -386,22 +402,36 @@ p1.Core.R
 
 
 # plot PEFA vs R
-p1.PEFA.R <- ggplot(WinterRain_Core_PEFA.df.R, aes(PEFA, Predicted)) + 
+p1.PEFA.R <- ggplot(WinterRain_Core_PEFA.df.R, aes(x=reorder(PEFA,-Predicted), y=Predicted)) + 
   stat_boxplot(geom ='errorbar', width = 0.6) +
   geom_boxplot(fill = 'grey', width = 0.6) +
-  xlab("PEFA") + ylab("Conditional R") +
   #geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.1, data = WinterRain.df.R)+
-  ylim(0,1)+ theme_minimal()
+  ylim(0,1)+ theme_minimal()+
+  labs(x = NULL,y = "R")+
+  theme(
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text.x = element_text(size = 13),
+    axis.text.y = element_text(size = 13)) 
 p1.PEFA.R
 
 ## plot Area Type vs psi
 p1.Core.psi <- ggplot(WinterRain_Core_PEFA.df.psi, aes(Core, Predicted)) + 
   stat_boxplot(geom ='errorbar', width = 0.6) +
   geom_boxplot(fill = 'grey', width = 0.6) +
-  xlab("Area Type") + ylab("probability of occupancy") +
+  xlab("Area Type")+ylab("Psi") +
   #geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.1, data = WinterRain.df.R)+
-  ylim(0,1)+ theme_minimal()
+  ylim(0,1)+ theme_minimal()+
+  theme(
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text.x = element_text(size = 13),
+    axis.text.y = element_text(size = 13)) 
 p1.Core.psi
+
+bottom_row = plot_grid(p1.Core.psi, p1.WinterRain.R, labels = c('(c)', '(d)'), label_size = 18, label_x = 0, label_y = 0,
+                       hjust = -0.5, vjust = -0.5)
+plot_grid(top_row, bottom_row, label_size = 18, ncol = 1)
 
 # --------------------------------------------------------------
 

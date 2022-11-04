@@ -7,7 +7,7 @@
 source("Code/Part5b_CreateUMF.R")
 library(unmarked)
 
-###### Static Multi-State Modeling with Unmarked #######
+###### Dynamic Multi-State Modeling with Unmarked #######
 
 ### Get basic model parameters ---------
 # Use PRFAStates_202m2 to calculate the following because PRFA202m2_Data_append has NA's
@@ -15,7 +15,6 @@ num_Year = max(PRFA2022_Data$BreedingYear) - min(PRFA2022_Data$BreedingYear) + 1
 num_Site = length(unique(PRFA2022_Data$TerritoryName)) #43
 num_Rep = max(PRFA2022_Data$Visit)  # max number of visits within each year
 # c(num_Year,num_Site,num_Rep) #test
-
 
 ############ modBig00m ########### 
 ### Set Formulas 
@@ -27,7 +26,7 @@ modBig00m_psiformulas <- c(
 modBig00m_phiformulas <- c('~1','~1','~1','~1','~1','~1')
 # umf_unstacked@phiOrder$multinomial
 # Detection probability (anything)
-modBig00m_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p1, p2 and delta 
+modBig00m_detformulas <- c('~AreaType','~AreaType','~LateEffect') # site OR obs Covs on p1, p2 and delta 
 
 ### Fit Model 
 modBig00m_fit <- occuMS(detformulas=modBig00m_detformulas, 
@@ -458,7 +457,7 @@ modBig16m_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs C
 ### Fit Model 
 modBig16m_fit <- occuMS(detformulas=modBig16m_detformulas, 
                                psiformulas=modBig16m_psiformulas,
-                               data=umf, parameterization = "condbinom")
+                               data=umf_unstacked, parameterization = "condbinom")
 modBig16m_fit
 #coef(modBig16m_fit)
 

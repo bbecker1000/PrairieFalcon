@@ -79,7 +79,9 @@ PEFA_2022<-filter(falcons_2022, CommonName=="Peregrine Falcon")
 PRFASurveys_2022 <-PRFA_2022 %>%
   mutate(AdultCount = coalesce(AdultCount,0),
          FledglingCount = coalesce(FledglingCount, 0),
-         NestlingCount = coalesce(NestlingCount, 0)) 
+         NestlingCount = coalesce(NestlingCount, 0),
+         OtherCount = coalesce(OtherCount, 0),
+         EggCountCode = coalesce(EggCountCode, "0")) 
 
 #save cleaned and formatted PRFA dataset 
 write_csv(PRFASurveys_2022, path = "Data/PRFASurveys_2022.csv", append = FALSE)

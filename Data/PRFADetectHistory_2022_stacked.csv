@@ -48,16 +48,16 @@ Citadel_2007,Core,1,0,0,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Citadel_2008,Core,1,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Citadel_2009,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Citadel_2010,Core,0,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Citadel_2011,Core,0,0,0,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA
+Citadel_2011,Core,0,0,0,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
 Citadel_2012,Core,0,0,0,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Citadel_2013,Core,0,0,0,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
+Citadel_2013,Core,0,0,0,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
 Citadel_2014,Core,1,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Citadel_2015,Core,1,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Citadel_2016,Core,0,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Citadel_2017,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Citadel_2018,Core,1,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
-Citadel_2019,Core,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Citadel_2020,Core,1,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
+Citadel_2018,Core,1,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
+Citadel_2019,Core,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Citadel_2020,Core,1,1,1,2,2,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
 Citadel_2021,Core,1,1,1,1,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Crowley Drainage_2007,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Crowley Drainage_2008,Non-core,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -65,7 +65,7 @@ Crowley Drainage_2009,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Crowley Drainage_2010,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Crowley Drainage_2011,Non-core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Crowley Drainage_2012,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Crowley Drainage_2013,Non-core,0,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Crowley Drainage_2013,Non-core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Crowley Drainage_2014,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Crowley Drainage_2015,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Crowley Drainage_2016,Non-core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -74,26 +74,26 @@ Crowley Drainage_2018,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Crowley Drainage_2019,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Crowley Drainage_2020,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Crowley Drainage_2021,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Crowley Towers_2007,Core,1,1,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA
+Crowley Towers_2007,Core,1,1,1,1,2,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
 Crowley Towers_2008,Core,1,1,1,1,1,0,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Crowley Towers_2009,Core,1,1,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
-Crowley Towers_2010,Core,1,1,1,1,1,1,1,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Crowley Towers_2011,Core,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Crowley Towers_2012,Core,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Crowley Towers_2013,Core,1,1,1,1,1,0,0,1,2,2,NA,NA,NA,NA,NA,NA,NA,NA
-Crowley Towers_2014,Core,0,1,1,1,1,1,1,1,1,2,1,2,2,NA,NA,NA,NA,NA
-Crowley Towers_2015,Core,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Crowley Towers_2016,Core,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,NA,NA,NA
-Crowley Towers_2017,Core,1,1,1,1,1,1,1,2,1,2,NA,NA,NA,NA,NA,NA,NA,NA
+Crowley Towers_2009,Core,1,1,1,2,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
+Crowley Towers_2010,Core,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Crowley Towers_2011,Core,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Crowley Towers_2012,Core,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Crowley Towers_2013,Core,1,1,1,1,1,0,0,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
+Crowley Towers_2014,Core,0,1,1,1,1,1,2,1,2,2,1,2,2,NA,NA,NA,NA,NA
+Crowley Towers_2015,Core,1,1,1,2,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Crowley Towers_2016,Core,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,NA,NA,NA
+Crowley Towers_2017,Core,1,1,1,1,2,2,2,2,1,2,NA,NA,NA,NA,NA,NA,NA,NA
 Crowley Towers_2018,Core,1,1,1,1,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Crowley Towers_2019,Core,1,1,1,1,1,1,1,1,2,1,2,2,2,NA,NA,NA,NA,NA
+Crowley Towers_2019,Core,1,1,1,1,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA
 Crowley Towers_2020,Core,1,1,1,1,1,1,1,1,1,1,1,1,1,NA,NA,NA,NA,NA
 Crowley Towers_2021,Core,1,1,1,1,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA
 D. Soto Canyon_2007,Non-core,1,1,1,1,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 D. Soto Canyon_2008,Non-core,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-D. Soto Canyon_2009,Non-core,0,0,0,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
-D. Soto Canyon_2010,Non-core,0,0,0,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-D. Soto Canyon_2011,Non-core,0,0,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+D. Soto Canyon_2009,Non-core,0,0,0,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+D. Soto Canyon_2010,Non-core,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+D. Soto Canyon_2011,Non-core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 D. Soto Canyon_2012,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 D. Soto Canyon_2013,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 D. Soto Canyon_2014,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -121,11 +121,11 @@ Deserted Valley_2020,Core,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Deserted Valley_2021,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Discovery Wall_2007,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Discovery Wall_2008,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Discovery Wall_2009,Core,1,1,2,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Discovery Wall_2009,Core,1,2,2,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Discovery Wall_2010,Core,1,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Discovery Wall_2011,Core,1,1,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Discovery Wall_2012,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Discovery Wall_2013,Core,0,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Discovery Wall_2013,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Discovery Wall_2014,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Discovery Wall_2015,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Discovery Wall_2016,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -134,13 +134,13 @@ Discovery Wall_2018,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Discovery Wall_2019,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Discovery Wall_2020,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Discovery Wall_2021,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Drywall_2007,Non-core,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Drywall_2008,Non-core,0,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Drywall_2009,Non-core,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Drywall_2007,Non-core,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Drywall_2008,Non-core,0,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Drywall_2009,Non-core,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Drywall_2010,Non-core,1,0,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Drywall_2011,Non-core,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Drywall_2012,Non-core,1,1,1,1,1,1,1,1,2,2,NA,NA,NA,NA,NA,NA,NA,NA
-Drywall_2013,Non-core,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Drywall_2011,Non-core,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Drywall_2012,Non-core,1,1,1,1,2,2,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
+Drywall_2013,Non-core,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Drywall_2014,Non-core,0,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
 Drywall_2015,Non-core,0,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Drywall_2016,Non-core,0,0,0,1,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -156,11 +156,11 @@ Egg_2010,Core,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Egg_2011,Core,0,0,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Egg_2012,Core,1,1,1,1,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Egg_2013,Core,0,0,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Egg_2014,Core,1,0,1,1,1,1,1,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Egg_2014,Core,1,0,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Egg_2015,Core,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Egg_2016,Core,0,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Egg_2017,Core,1,1,1,1,1,1,1,1,1,1,1,1,0,NA,NA,NA,NA,NA
-Egg_2018,Core,0,0,1,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA
+Egg_2018,Core,0,0,1,1,1,2,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA
 Egg_2019,Core,0,1,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
 Egg_2020,Core,1,1,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Egg_2021,Core,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -182,8 +182,8 @@ Frog Canyon_2021,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Frog/Hand_2007,Core,1,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Frog/Hand_2008,Core,0,0,0,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Frog/Hand_2009,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Frog/Hand_2010,Core,0,0,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Frog/Hand_2011,Core,0,0,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Frog/Hand_2010,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Frog/Hand_2011,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Frog/Hand_2012,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Frog/Hand_2013,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Frog/Hand_2014,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -198,7 +198,7 @@ General Balconies_2007,Core,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 General Balconies_2008,Core,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 General Balconies_2009,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 General Balconies_2010,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-General Balconies_2011,Core,1,1,1,0,0,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+General Balconies_2011,Core,1,1,0,0,0,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 General Balconies_2012,Core,1,1,1,1,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 General Balconies_2013,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 General Balconies_2014,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -207,13 +207,13 @@ General Balconies_2016,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 General Balconies_2017,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 General Balconies_2018,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 General Balconies_2019,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-General Balconies_2020,Core,0,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+General Balconies_2020,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 General Balconies_2021,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Goat Rock_2007,Core,1,1,1,1,1,1,1,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Goat Rock_2008,Core,1,1,1,1,1,0,1,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Goat Rock_2009,Core,0,0,1,1,1,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA
-Goat Rock_2010,Core,1,1,1,1,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA
-Goat Rock_2011,Core,1,1,1,0,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Goat Rock_2009,Core,0,0,0,1,1,1,2,2,2,2,2,2,2,2,NA,NA,NA,NA
+Goat Rock_2010,Core,1,1,1,1,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA
+Goat Rock_2011,Core,1,1,1,0,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Goat Rock_2012,Core,0,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Goat Rock_2013,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Goat Rock_2014,Core,0,0,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -257,23 +257,23 @@ Hanging Valley_2021,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Hawkins Peak_2007,Core,0,0,0,0,0,0,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Hawkins Peak_2008,Core,0,1,1,0,0,0,0,0,0,0,0,0,0,0,NA,NA,NA,NA
 Hawkins Peak_2009,Core,1,0,0,0,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA
-Hawkins Peak_2010,Core,0,0,1,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hawkins Peak_2010,Core,0,0,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Hawkins Peak_2011,Core,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Hawkins Peak_2012,Core,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Hawkins Peak_2013,Core,0,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Hawkins Peak_2014,Core,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Hawkins Peak_2015,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Hawkins Peak_2016,Core,0,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Hawkins Peak_2017,Core,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hawkins Peak_2016,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hawkins Peak_2017,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Hawkins Peak_2018,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Hawkins Peak_2019,Core,0,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hawkins Peak_2019,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Hawkins Peak_2020,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Hawkins Peak_2021,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 High Peaks Trail West of Chalone Picnic Area_2007,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 High Peaks Trail West of Chalone Picnic Area_2008,Non-core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 High Peaks Trail West of Chalone Picnic Area_2009,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-High Peaks Trail West of Chalone Picnic Area_2010,Non-core,0,1,1,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-High Peaks Trail West of Chalone Picnic Area_2011,Non-core,0,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+High Peaks Trail West of Chalone Picnic Area_2010,Non-core,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+High Peaks Trail West of Chalone Picnic Area_2011,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 High Peaks Trail West of Chalone Picnic Area_2012,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 High Peaks Trail West of Chalone Picnic Area_2013,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 High Peaks Trail West of Chalone Picnic Area_2014,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -284,13 +284,13 @@ High Peaks Trail West of Chalone Picnic Area_2018,Non-core,0,0,0,NA,NA,NA,NA,NA,
 High Peaks Trail West of Chalone Picnic Area_2019,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 High Peaks Trail West of Chalone Picnic Area_2020,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 High Peaks Trail West of Chalone Picnic Area_2021,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Little Pinnacles_2007,Core,1,1,0,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
-Little Pinnacles_2008,Core,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Little Pinnacles_2009,Core,1,1,1,1,1,1,1,1,2,2,NA,NA,NA,NA,NA,NA,NA,NA
-Little Pinnacles_2010,Core,1,1,1,1,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA
+Little Pinnacles_2007,Core,1,1,0,1,1,2,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
+Little Pinnacles_2008,Core,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Little Pinnacles_2009,Core,1,1,1,1,1,2,2,1,2,2,NA,NA,NA,NA,NA,NA,NA,NA
+Little Pinnacles_2010,Core,1,1,1,1,1,1,1,1,2,1,2,2,2,NA,NA,NA,NA,NA
 Little Pinnacles_2011,Core,1,1,1,1,1,1,1,1,1,1,1,0,0,NA,NA,NA,NA,NA
 Little Pinnacles_2012,Core,1,0,1,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Little Pinnacles_2013,Core,0,0,0,0,0,1,1,1,1,1,1,1,1,2,NA,NA,NA,NA
+Little Pinnacles_2013,Core,0,0,0,0,0,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA
 Little Pinnacles_2014,Core,1,1,1,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Little Pinnacles_2015,Core,0,0,0,0,0,0,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Little Pinnacles_2016,Core,0,1,1,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -299,25 +299,25 @@ Little Pinnacles_2018,Core,0,1,1,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Little Pinnacles_2019,Core,0,0,1,0,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Little Pinnacles_2020,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Little Pinnacles_2021,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Machete Ridge_2007,Core,0,0,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA
+Machete Ridge_2007,Core,0,0,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
 Machete Ridge_2008,Core,0,1,1,1,1,1,1,1,1,1,1,NA,NA,NA,NA,NA,NA,NA
-Machete Ridge_2009,Core,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Machete Ridge_2009,Core,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Machete Ridge_2010,Core,1,1,1,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Machete Ridge_2011,Core,1,1,1,0,0,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Machete Ridge_2012,Core,1,1,1,1,1,1,1,1,1,1,1,1,NA,NA,NA,NA,NA,NA
 Machete Ridge_2013,Core,0,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Machete Ridge_2014,Core,0,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Machete Ridge_2015,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Machete Ridge_2016,Core,0,0,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Machete Ridge_2016,Core,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Machete Ridge_2017,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Machete Ridge_2018,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Machete Ridge_2019,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Machete Ridge_2020,Core,0,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Machete Ridge_2020,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Machete Ridge_2021,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Mating Rocks_2007,Non-core,1,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Mating Rocks_2007,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Mating Rocks_2008,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Mating Rocks_2009,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Mating Rocks_2010,Non-core,0,1,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Mating Rocks_2010,Non-core,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Mating Rocks_2011,Non-core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Mating Rocks_2012,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Mating Rocks_2013,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -350,7 +350,7 @@ NE Sec 15_2009,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 NE Sec 15_2010,Non-core,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 NE Sec 15_2011,Non-core,1,0,1,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 NE Sec 15_2012,Non-core,1,1,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NE Sec 15_2013,Non-core,0,0,0,0,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA
+NE Sec 15_2013,Non-core,0,0,0,0,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
 NE Sec 15_2014,Non-core,1,1,1,1,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA
 NE Sec 15_2015,Non-core,1,1,0,1,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA
 NE Sec 15_2016,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -391,18 +391,18 @@ North Balconies_2020,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 North Balconies_2021,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 North Chalone Peak_2007,Non-core,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 North Chalone Peak_2008,Non-core,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-North Chalone Peak_2009,Non-core,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-North Chalone Peak_2010,Non-core,0,0,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-North Chalone Peak_2011,Non-core,0,0,0,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-North Chalone Peak_2012,Non-core,0,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-North Chalone Peak_2013,Non-core,0,1,1,1,1,0,1,2,1,2,2,NA,NA,NA,NA,NA,NA,NA
+North Chalone Peak_2009,Non-core,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+North Chalone Peak_2010,Non-core,0,0,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+North Chalone Peak_2011,Non-core,0,0,0,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+North Chalone Peak_2012,Non-core,0,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+North Chalone Peak_2013,Non-core,0,1,1,1,1,0,2,2,1,2,2,NA,NA,NA,NA,NA,NA,NA
 North Chalone Peak_2014,Non-core,1,1,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-North Chalone Peak_2015,Non-core,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
-North Chalone Peak_2016,Non-core,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-North Chalone Peak_2017,Non-core,1,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
-North Chalone Peak_2018,Non-core,0,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-North Chalone Peak_2019,Non-core,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
-North Chalone Peak_2020,Non-core,1,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
+North Chalone Peak_2015,Non-core,1,1,2,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+North Chalone Peak_2016,Non-core,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+North Chalone Peak_2017,Non-core,1,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
+North Chalone Peak_2018,Non-core,0,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+North Chalone Peak_2019,Non-core,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+North Chalone Peak_2020,Non-core,1,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
 North Chalone Peak_2021,Non-core,0,1,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
 North Wilderness Rock_2007,Non-core,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 North Wilderness Rock_2008,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -419,13 +419,13 @@ North Wilderness Rock_2018,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 North Wilderness Rock_2019,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 North Wilderness Rock_2020,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 North Wilderness Rock_2021,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pig Canyon_2007,Non-core,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pig Canyon_2008,Non-core,1,0,0,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA
-Pig Canyon_2009,Non-core,0,1,1,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA
+Pig Canyon_2007,Non-core,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Pig Canyon_2008,Non-core,1,0,0,1,1,2,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA
+Pig Canyon_2009,Non-core,0,1,1,1,2,2,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA
 Pig Canyon_2010,Non-core,0,0,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pig Canyon_2011,Non-core,0,0,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pig Canyon_2012,Non-core,0,1,0,1,1,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA
-Pig Canyon_2013,Non-core,0,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Pig Canyon_2012,Non-core,0,1,0,1,1,1,2,2,2,2,2,2,2,2,NA,NA,NA,NA
+Pig Canyon_2013,Non-core,0,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pig Canyon_2014,Non-core,1,1,1,1,1,1,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA
 Pig Canyon_2015,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pig Canyon_2016,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -437,7 +437,7 @@ Pig Canyon_2021,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pipsqueak Pinnacles_2007,Core,0,1,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pipsqueak Pinnacles_2008,Core,0,0,0,0,1,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA
 Pipsqueak Pinnacles_2009,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pipsqueak Pinnacles_2010,Core,0,0,0,0,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Pipsqueak Pinnacles_2010,Core,0,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pipsqueak Pinnacles_2011,Core,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pipsqueak Pinnacles_2012,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pipsqueak Pinnacles_2013,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -459,30 +459,30 @@ Prescribed Burn Cliffs_2013,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,
 Prescribed Burn Cliffs_2014,Core,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Prescribed Burn Cliffs_2015,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Prescribed Burn Cliffs_2016,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Prescribed Burn Cliffs_2017,Core,0,1,1,1,1,2,2,2,1,2,NA,NA,NA,NA,NA,NA,NA,NA
-Prescribed Burn Cliffs_2018,Core,1,1,0,1,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Prescribed Burn Cliffs_2017,Core,0,0,1,1,2,2,2,2,1,2,NA,NA,NA,NA,NA,NA,NA,NA
+Prescribed Burn Cliffs_2018,Core,1,1,0,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Prescribed Burn Cliffs_2019,Core,0,1,1,1,1,1,1,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Prescribed Burn Cliffs_2020,Core,0,1,1,1,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Prescribed Burn Cliffs_2021,Core,0,1,0,1,1,1,1,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Resurrection Wall_2007,Core,0,0,0,0,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
+Resurrection Wall_2007,Core,0,0,0,0,1,2,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
 Resurrection Wall_2008,Core,0,0,0,1,1,1,1,1,0,1,NA,NA,NA,NA,NA,NA,NA,NA
 Resurrection Wall_2009,Core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Resurrection Wall_2010,Core,0,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Resurrection Wall_2010,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Resurrection Wall_2011,Core,0,0,0,0,0,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
-Resurrection Wall_2012,Core,1,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
+Resurrection Wall_2012,Core,1,1,1,1,2,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
 Resurrection Wall_2013,Core,1,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
 Resurrection Wall_2014,Core,1,1,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
-Resurrection Wall_2015,Core,1,1,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
-Resurrection Wall_2016,Core,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2
-Resurrection Wall_2017,Core,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,NA,NA,NA
+Resurrection Wall_2015,Core,1,1,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
+Resurrection Wall_2016,Core,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2
+Resurrection Wall_2017,Core,1,1,1,1,1,1,2,1,2,2,2,2,2,2,2,NA,NA,NA
 Resurrection Wall_2018,Core,0,1,1,1,1,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA
-Resurrection Wall_2019,Core,1,1,1,1,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA
-Resurrection Wall_2020,Core,0,1,1,1,1,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA
+Resurrection Wall_2019,Core,1,1,1,1,1,1,2,2,2,2,2,2,2,NA,NA,NA,NA,NA
+Resurrection Wall_2020,Core,0,1,1,1,1,2,1,1,2,2,2,2,2,2,NA,NA,NA,NA
 Resurrection Wall_2021,Core,0,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Scout Peak_2007,Core,0,0,0,1,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Scout Peak_2008,Core,0,1,0,1,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA
 Scout Peak_2009,Core,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Scout Peak_2010,Core,0,0,0,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Scout Peak_2010,Core,0,0,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Scout Peak_2011,Core,0,0,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Scout Peak_2012,Core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Scout Peak_2013,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -494,17 +494,17 @@ Scout Peak_2018,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Scout Peak_2019,Core,1,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Scout Peak_2020,Core,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Scout Peak_2021,Core,0,0,0,0,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-South Balconies_2007,Core,0,1,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA
-South Balconies_2008,Core,0,1,1,1,0,1,1,1,2,2,NA,NA,NA,NA,NA,NA,NA,NA
+South Balconies_2007,Core,0,1,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
+South Balconies_2008,Core,0,1,1,1,0,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
 South Balconies_2009,Core,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Balconies_2010,Core,1,1,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-South Balconies_2011,Core,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+South Balconies_2011,Core,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Balconies_2012,Core,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,NA
-South Balconies_2013,Core,1,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
-South Balconies_2014,Core,0,1,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
-South Balconies_2015,Core,0,1,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
-South Balconies_2016,Core,0,0,1,1,1,1,1,1,1,1,1,2,1,2,2,2,2,NA
-South Balconies_2017,Core,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,0,0,NA
+South Balconies_2013,Core,1,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
+South Balconies_2014,Core,0,1,1,1,2,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
+South Balconies_2015,Core,0,1,1,2,2,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
+South Balconies_2016,Core,0,0,1,1,1,1,1,1,1,1,2,2,1,2,2,2,2,NA
+South Balconies_2017,Core,0,0,1,0,1,1,1,1,1,1,1,1,1,1,1,0,0,NA
 South Balconies_2018,Core,0,1,1,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Balconies_2019,Core,0,0,1,1,0,1,1,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Balconies_2020,Core,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,NA,NA
@@ -512,11 +512,11 @@ South Balconies_2021,Core,0,1,1,1,1,2,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
 South Chalone_2007,Non-core,0,0,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Chalone_2008,Non-core,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Chalone_2009,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-South Chalone_2010,Non-core,1,1,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+South Chalone_2010,Non-core,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Chalone_2011,Non-core,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Chalone_2012,Non-core,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Chalone_2013,Non-core,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-South Chalone_2014,Non-core,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+South Chalone_2014,Non-core,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Chalone_2015,Non-core,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Chalone_2016,Non-core,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Chalone_2017,Non-core,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -538,7 +538,7 @@ South Wilderness Rock_2017,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Wilderness Rock_2018,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Wilderness Rock_2019,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 South Wilderness Rock_2020,Non-core,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-South Wilderness Rock_2021,Non-core,1,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+South Wilderness Rock_2021,Non-core,1,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Teapot Dome_2007,Core,1,1,1,1,1,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA
 Teapot Dome_2008,Core,0,1,0,1,1,0,1,0,1,1,NA,NA,NA,NA,NA,NA,NA,NA
 Teapot Dome_2009,Core,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -548,7 +548,7 @@ Teapot Dome_2012,Core,1,0,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Teapot Dome_2013,Core,0,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Teapot Dome_2014,Core,0,0,0,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Teapot Dome_2015,Core,0,1,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Teapot Dome_2016,Core,0,1,1,0,0,1,1,2,2,1,2,2,2,2,2,NA,NA,NA
+Teapot Dome_2016,Core,0,1,1,0,0,2,2,2,2,1,2,2,2,2,2,NA,NA,NA
 Teapot Dome_2017,Core,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Teapot Dome_2018,Core,0,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Teapot Dome_2019,Core,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -635,12 +635,12 @@ Willow Spring Slide_2009,Non-core,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,N
 Willow Spring Slide_2010,Non-core,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Willow Spring Slide_2011,Non-core,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Willow Spring Slide_2012,Non-core,1,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Willow Spring Slide_2013,Non-core,0,0,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
-Willow Spring Slide_2014,Non-core,1,1,1,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
+Willow Spring Slide_2013,Non-core,0,0,1,1,1,1,2,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA
+Willow Spring Slide_2014,Non-core,1,1,1,1,1,1,2,2,2,2,2,NA,NA,NA,NA,NA,NA,NA
 Willow Spring Slide_2015,Non-core,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Willow Spring Slide_2016,Non-core,1,1,1,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Willow Spring Slide_2017,Non-core,1,1,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Willow Spring Slide_2018,Non-core,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Willow Spring Slide_2018,Non-core,1,1,1,1,2,1,2,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Willow Spring Slide_2019,Non-core,1,1,1,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Willow Spring Slide_2020,Non-core,0,1,1,1,1,1,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Willow Spring Slide_2021,Non-core,0,1,1,1,1,1,1,1,2,2,2,NA,NA,NA,NA,NA,NA,NA
