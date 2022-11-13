@@ -23,8 +23,8 @@ PEFA_class <- PEFA_2022 %>%
          NestlingCount = coalesce(NestlingCount, 0),
          EggCountCode = coalesce(EggCountCode, "0")) %>% 
   mutate(State=ifelse(
-  (FledglingCount>0) | (NestlingCount >0) | (EggCountCode != "0"), 2, ifelse(
-    AdultCount != 0, 1, 0))) %>% 
+  (FledglingCount>0) | (NestlingCount >0) | (EggCountCode == "indet"), 2, ifelse(
+    (AdultCount != 0|OtherCount !=0) & IsTerritorialBehavior == "Yes", 1, 0))) %>% 
   group_by(TerritoryName, BreedingYear) %>% 
   summarise(PEFAState =  max(State)) 
 
@@ -58,12 +58,39 @@ rm(PEFA_class)
 
 
 ### Assign the initial state for each observation -------
+# look at how many obervations saw only adults/other but without territorial behaviors 
+adultNoTerriBehav = PRFASurveys_2022 %>% 
+  filter((AdultCount != 0|OtherCount != 0) & IsTerritorialBehavior == 'No' & FledglingCount == 0 & NestlingCount == 0)
+# write_csv(test, path = "Data/Adult0_NotTerritorial.csv", append= FALSE)
+
+# look at how many obervations saw only adults/other and with territorial behaviors
+adultYesTerriBehav = PRFASurveys_2022 %>% 
+  filter((AdultCount != 0|OtherCount != 0) & IsTerritorialBehavior == 'Yes' & FledglingCount == 0 & NestlingCount == 0)
+
+# look at what EggCount == "Indet" means for breeding (when nestlings == 0)
+EggCountIndetNoIncub = PRFASurveys_2022 %>% 
+  filter(EggCountCode =='Indet' & NestlingCount == 0) %>% 
+  filter(!grepl('incubat', Summary))
+
+EggCountIndetWithIncub = PRFASurveys_2022 %>% 
+  filter(EggCountCode =='Indet' & NestlingCount == 0) %>% 
+  filter(grepl('incubat', Summary))
+
+# OLD CLASSIFICATION SCHEME 
+# PRFAStates_2022<- PRFASurveys_2022 %>%
+#   #Determine inital state (0 = Unoccupied, 1= adults only, 1.5 = nestlings present and no fledglings, 2 = fledgling present)
+#   mutate(initialState=ifelse(
+#     FledglingCount>0, 2, ifelse(
+#       NestlingCount >0, 1.5, ifelse(
+#         AdultCount>0, 1,0))))
+
+# NEW CLASSIFICATION SCHEME
 PRFAStates_2022<- PRFASurveys_2022 %>%
-  #Determine inital state (0 = Unoccupied, 1= adults only, 1.5 = nestlings present and no fledglings, 2 = fledgling present)
+  #Determine inital states
   mutate(initialState=ifelse(
     FledglingCount>0, 2, ifelse(
-      NestlingCount >0, 1.5, ifelse(
-        AdultCount>0, 1,0)))) 
+      NestlingCount >0 | EggCountCode == "Indet", 1.5, ifelse(
+        (AdultCount>0|OtherCount>0) & IsTerritorialBehavior == "Yes", 1,0))))
 
 
 ### More Filtering ---------
@@ -104,7 +131,7 @@ PRFAStates_2022 = PRFAStates_2022 %>%
 
 min_First_Two_Date = PRFAStates_2022 %>% 
   group_by(TerritoryName, BreedingYear) %>% 
-  filter(finalState == 2) %>% 
+  filter(initialState ==1.5) %>% 
   summarise(minDate = min(SurveyDate),
             minDay = as.numeric(min(DaySinceDec15th)))
 

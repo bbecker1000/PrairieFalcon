@@ -6,6 +6,7 @@
 
 source("Code/Part2_DatasetPrep.R")
 
+
 ###### Exploratory Data Analysis & Visualization #######
 test = PRFASurveys_2022 %>% 
   group_by(BreedingYear, TerritoryName, Area_Type) %>% 
@@ -32,6 +33,7 @@ ggplot(SurveyAreaType_2022, aes(x= BreedingYear, y = AvgVisits)) +
     axis.title.y = element_text(size = 15),
     axis.text.x = element_text(size = 12),
     axis.text.y = element_text(size = 12)) 
+
 
 
 ### Number of years of UNPOOLED surveys for each site (code from Ben)--------
@@ -83,14 +85,15 @@ table(Surveys_per_Location_per_Year$surveys) # most are 3-5
 # table(Surveys_per_Location_per_Year_pooled$surveys) # most are 3-5
 
 ### Plot unpooled data -----------
-yColor <- ifelse(PRFAStates_2022$Area_Type == "Core", "plain", "bold.italic")
+yColor <- ifelse(PRFAStates_2022$Area_Type == "Core", "orangered4", "royalblue4")
 PlotStates_2022<- ggplot(PRFAStates_2022, aes(x = DaySinceDec15th, y = fct_rev(as_factor(TerritoryName)), fill = as.factor(finalState))) + 
   geom_point(shape = 21)+
-  scale_fill_manual(values = c("white", "burlywood", "red4")) + 
+  scale_fill_manual(values = c("white", "grey80", "black")) + 
   facet_grid(cols = vars(BreedingYear))+
   labs(fill = "States") +
+  theme_minimal()+
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), 
-        axis.text.y = element_text(face = yColor),
+        axis.text.y = element_text(color  = yColor),
         axis.title.y = element_blank())+
   geom_vline(xintercept= LateCutOff, linetype="dotdash", color = "black", size = 0.3)
 PlotStates_2022 

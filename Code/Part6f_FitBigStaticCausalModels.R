@@ -26,11 +26,11 @@ num_Rep = max(PRFA2022_Data$Visit)  # max number of visits within each year
 ### Set Formulas 
 # State Params
 modBig01_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig01_stacked_CAUSAL_detformulas <- c('~1','~1+LateEffect','~1+LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig01_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') 
 
 ### Fit Model 
 modBig01_stacked_CAUSAL <- occuMS(detformulas=modBig01_stacked_CAUSAL_detformulas, 
@@ -43,11 +43,11 @@ modBig01_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig02_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + LongDrought',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + LongDrought',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig02_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig02_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig02_stacked_CAUSAL <- occuMS(detformulas=modBig02_stacked_CAUSAL_detformulas, 
@@ -61,11 +61,11 @@ modBig02_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig03_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + ShortDrought',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + ShortDrought',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig03_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig03_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig03_stacked_CAUSAL <- occuMS(detformulas=modBig03_stacked_CAUSAL_detformulas, 
@@ -79,11 +79,11 @@ modBig03_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig04_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + LongDrought',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + LongDrought',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig04_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig04_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig04_stacked_CAUSAL <- occuMS(detformulas=modBig04_stacked_CAUSAL_detformulas, 
@@ -97,11 +97,11 @@ modBig04_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig05_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + ShortDrought',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + ShortDrought',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig05_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig05_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig05_stacked_CAUSAL <- occuMS(detformulas=modBig05_stacked_CAUSAL_detformulas, 
@@ -115,11 +115,11 @@ modBig05_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig06_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + LongDrought + ShortDrought',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + LongDrought + ShortDrought',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig06_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig06_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig06_stacked_CAUSAL <- occuMS(detformulas=modBig06_stacked_CAUSAL_detformulas, 
@@ -133,11 +133,11 @@ modBig06_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig07_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + LongDrought+ ShortDrought',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + LongDrought+ ShortDrought',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig07_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig07_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig07_stacked_CAUSAL <- occuMS(detformulas=modBig07_stacked_CAUSAL_detformulas, 
@@ -156,11 +156,11 @@ modBig07_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig08_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig08_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig08_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig08_stacked_CAUSAL <- occuMS(detformulas=modBig08_stacked_CAUSAL_detformulas, 
@@ -174,11 +174,11 @@ modBig08_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig09_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + LongDrought + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + LongDrought + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig09_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig09_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig09_stacked_CAUSAL <- occuMS(detformulas=modBig09_stacked_CAUSAL_detformulas, 
@@ -192,11 +192,11 @@ modBig09_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig10_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + ShortDrought + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + ShortDrought + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig10_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig10_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig10_stacked_CAUSAL <- occuMS(detformulas=modBig10_stacked_CAUSAL_detformulas, 
@@ -210,11 +210,11 @@ modBig10_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig11_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + LongDrought + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + LongDrought + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig11_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig11_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig11_stacked_CAUSAL <- occuMS(detformulas=modBig11_stacked_CAUSAL_detformulas, 
@@ -228,11 +228,11 @@ modBig11_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig12_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + ShortDrought + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + ShortDrought + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig12_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig12_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig12_stacked_CAUSAL <- occuMS(detformulas=modBig12_stacked_CAUSAL_detformulas, 
@@ -246,11 +246,11 @@ modBig12_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig13_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + LongDrought + ShortDrought + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + LongDrought + ShortDrought + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig13_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig13_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig13_stacked_CAUSAL <- occuMS(detformulas=modBig13_stacked_CAUSAL_detformulas, 
@@ -264,11 +264,11 @@ modBig13_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig14_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + LongDrought + ShortDrought + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + LongDrought + ShortDrought + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig14_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig14_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig14_stacked_CAUSAL <- occuMS(detformulas=modBig14_stacked_CAUSAL_detformulas, 
@@ -282,11 +282,11 @@ modBig14_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig15_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig15_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig15_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig15_stacked_CAUSAL <- occuMS(detformulas=modBig15_stacked_CAUSAL_detformulas, 
@@ -300,11 +300,11 @@ modBig15_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig16_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + ColdDays + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + ColdDays + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig16_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig16_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig16_stacked_CAUSAL <- occuMS(detformulas=modBig16_stacked_CAUSAL_detformulas, 
@@ -318,11 +318,11 @@ modBig16_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig17_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + ColdDays + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + ColdDays + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig17_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig17_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig17_stacked_CAUSAL <- occuMS(detformulas=modBig17_stacked_CAUSAL_detformulas, 
@@ -340,10 +340,10 @@ modBig17_stacked_CAUSAL
 # State Params
 modBig18_stacked_CAUSAL_psiformulas <- c(
   '~BreedingYear + AreaType*AnnualVisitors + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig18_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig18_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig18_stacked_CAUSAL <- occuMS(detformulas=modBig18_stacked_CAUSAL_detformulas, 
@@ -358,11 +358,11 @@ modBig18_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig19_stacked_CAUSAL_psiformulas <- c(
-  '~AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig19_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig19_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig19_stacked_CAUSAL <- occuMS(detformulas=modBig19_stacked_CAUSAL_detformulas, 
@@ -377,11 +377,11 @@ modBig19_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig20_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig20_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig20_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig20_stacked_CAUSAL <- occuMS(detformulas=modBig20_stacked_CAUSAL_detformulas, 
@@ -397,11 +397,11 @@ modBig20_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig21_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
   '~BreedingYear + AreaType*AnnualVisitors + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig21_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig21_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig21_stacked_CAUSAL <- occuMS(detformulas=modBig21_stacked_CAUSAL_detformulas, 
@@ -416,11 +416,11 @@ modBig21_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig22_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig22_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig22_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig22_stacked_CAUSAL <- occuMS(detformulas=modBig22_stacked_CAUSAL_detformulas, 
@@ -435,11 +435,11 @@ modBig22_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig23_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig23_stacked_CAUSAL_detformulas <- c('~1','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
+modBig23_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig23_stacked_CAUSAL <- occuMS(detformulas=modBig23_stacked_CAUSAL_detformulas, 
@@ -454,8 +454,8 @@ modBig23_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig24_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + ColdDays + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD  + HotDays') #siteCovs on psi and R
 
 # Detection probability
 modBig24_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect','~LateEffect') # site OR obs Covs on p11, p12, and p22 
@@ -471,8 +471,8 @@ modBig24_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig25_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation',
-  '~BreedingYear + AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
 modBig25_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect') # site OR obs Covs on p11, p12, and p22 
@@ -489,8 +489,8 @@ modBig25_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig26_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + DecToFebPrecipitation',
-  '~AreaType*AnnualVisitors + PEFA + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation',
+  '~BreedingYear + AreaType*AnnualVisitors + PEFAState + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
 modBig26_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
@@ -523,15 +523,15 @@ modBig27_stacked_CAUSAL
 
 
 ############ modBig28_stacked_CAUSAL ########### 
-# Uses PEFAState instead
+# Uses PEFA instead
 ### Set Formulas 
 # State Params
 modBig28_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + AreaType*AnnualVisitors + DecToFebPrecipitation',
-  '~PEFAState + AreaType*AnnualVisitors + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
+  '~BreedingYear + PEFA + AreaType*AnnualVisitors + DecToFebPrecipitation',
+  '~PEFA + AreaType*AnnualVisitors + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
-modBig28_stacked_CAUSAL_detformulas <- c('~AreaType','~LateEffect + AreaType','~LateEffect + AreaType') # site OR obs Covs on p11, p12, and p22 
+modBig28_stacked_CAUSAL_detformulas <- c('~AreaType','~1','~LateEffect') # site OR obs Covs on p11, p12, and p22 
 
 ### Fit Model 
 modBig28_stacked_CAUSAL <- occuMS(detformulas=modBig28_stacked_CAUSAL_detformulas, 
@@ -655,7 +655,11 @@ BEST_MODEL_det_predict = predict(BEST_MODEL,type='det') # est. for p1, p2, delta
 # If cond_binom, calculate psi1 and psi2 with psi and R:
 BEST_MODEL_state_params = data.frame(
   psi = BEST_MODEL_psi_predict$psi$Predicted,
-  R = BEST_MODEL_psi_predict$R$Predicted) %>%
+  psiCI.lower = BEST_MODEL_psi_predict$psi$lower,
+  psiCI.upper = BEST_MODEL_psi_predict$psi$upper,
+  R = BEST_MODEL_psi_predict$R$Predicted,
+  RCI.lower = BEST_MODEL_psi_predict$R$lower,
+  RCI.upper = BEST_MODEL_psi_predict$R$upper) %>%
   mutate(psi1 = psi*(1-R),
          psi2 = psi*R)
 
