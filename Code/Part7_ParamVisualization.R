@@ -426,7 +426,7 @@ ggplot(df, aes(WinterRain, R.Predicted)) +
 
 ## plot of total occupied and reproductive sites
 ## multiple by # sites
-## quick and dirty for now.  this needs to be fixed to account for core and non-core hen doing Psi.
+## quick and dirty for now.  this needs to be fixed to account for core and non-core when doing Psi and R
 
 PRFA_2022 %>%
     group_by(Area_Type) %>%
@@ -434,11 +434,11 @@ PRFA_2022 %>%
 
 N_Core_territories <- 27
 N_Non_Core_territories <- 16
+Territories = N_Core_territories + N_Non_Core_territories
 
-print(AnnualAvgPredicted_condbinom.psi.R, n = 43)
-AnnualAvgPredicted_condbinom.psi.R$Territories <- ifelse(AnnualAvgPredicted_condbinom.psi.R$AreaType == "Core", 
-                                                         N_Core_territories,
-                                                         N_Non_Core_territories)
+#Territories <- ifelse(AnnualAvgPredicted_condbinom.psi.R$AreaType == "Core", 
+ #                                                        N_Core_territories,
+  #                                                       N_Non_Core_territories)
 BEST_MODEL_state_params.sum_plot = data.frame(
   psi.predicted = BEST_MODEL_psi_predict$psi$Predicted,
   psi.lower = BEST_MODEL_psi_predict$psi$lower,
@@ -447,22 +447,64 @@ BEST_MODEL_state_params.sum_plot = data.frame(
   R.lower = BEST_MODEL_psi_predict$R$lower,
   R.upper = BEST_MODEL_psi_predict$R$upper)
 
-
-BEST_MODEL_state_params.sum_plot %>% 
+BEST_MODEL_state_params.sum_plot <- BEST_MODEL_state_params.sum_plot %>% 
        mutate(Territory = PEFACovs$TerritoryName,
        BreedingYear = rep(2007:2021, time = 43),
        YearDate = ymd(rep(2007:2021, time = 43), truncated = 2L)) %>% 
   group_by(YearDate) %>% 
   summarise(psi.predicted =  mean(psi.predicted),
             psi.lower = mean(psi.lower),
-            psi.upper = mean(psi.lower),
+            psi.upper = mean(psi.upper),
             R.predicted =  mean(R.predicted),
             R.lower = mean(R.lower),
-            R.upper = mean(R.lower)) 
+            R.upper = mean(R.upper)) 
 
 
-A
+p.occ.territories <- ggplot(BEST_MODEL_state_params.sum_plot, aes(x= YearDate, y = psi.predicted*Territories))+
+  geom_line()+
+  geom_point(size = 3)  +
+  geom_errorbar(aes(ymin=psi.lower*Territories, ymax=psi.upper*Territories), width = 150, size = 0.6, 
+                position = position_dodge(.5)) +
+  scale_x_date(breaks = scales::breaks_pretty(15))+
+  scale_y_continuous(breaks = scales::breaks_pretty(8))+  
+  labs(title="Occupied Territories 2007 - 2021", x="Year", y = "Occupied Territories")+
+  ylim(0,40)+
+  scale_shape_manual(values=c(15, 17))+
+  scale_linetype_manual(values  = c("solid", "dashed"))+
+  scale_color_manual(values=c('#E69F00','#999999')) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 13, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 10, hjust = 0.5),
+    axis.title.x = element_text(size = 12),
+    axis.title.y = element_text(size = 12),
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_text(size = 10)) 
 
+
+p.repr.territories <- ggplot(BEST_MODEL_state_params.sum_plot, aes(x= YearDate, y = psi.predicted*Territories*R.predicted))+
+  geom_line()+
+  geom_point(size = 3)  +
+  geom_errorbar(aes(ymin=psi.lower*Territories*R.lower, ymax=psi.upper*Territories*R.upper), width = 150, size = 0.6, 
+                position = position_dodge(.5)) +
+  scale_x_date(breaks = scales::breaks_pretty(15))+
+  scale_y_continuous(breaks = scales::breaks_pretty(8))+  
+  labs(title="Reproductive Territories 2007 - 2021", x="Year", y = "Reproductive Territories")+
+  ylim(0,40)+
+  scale_shape_manual(values=c(15, 17))+
+  scale_linetype_manual(values  = c("solid", "dashed"))+
+  scale_color_manual(values=c('#E69F00','#999999')) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 13, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 10, hjust = 0.5),
+    axis.title.x = element_text(size = 12),
+    axis.title.y = element_text(size = 12),
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_text(size = 10)) 
+
+library(cowplot)
+plot_grid(p.occ.territories, p.repr.territories)
 
 
 
