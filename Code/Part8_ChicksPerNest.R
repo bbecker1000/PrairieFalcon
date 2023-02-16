@@ -37,4 +37,6 @@ t1 <- ChicksPerNest %>% select(-SD) %>%
    
 with(t1, cor.test(NestingPEFAPairs, PRFAChicksPerNest))
 
+with(t1, plot(NestingPEFAPairs, PRFAChicksPerNest))
+
 
