@@ -415,6 +415,23 @@ p1.PEFA.R <- ggplot(WinterRain_Core_PEFA.df.R, aes(x=reorder(PEFA,-Predicted), y
     axis.text.y = element_text(size = 13)) 
 p1.PEFA.R
 
+# # plot PEFAState vs R
+# p1.PEFAState.R <- ggplot(WinterRain_Core_PEFA.df.R, aes(x=reorder(PEFAState,-Predicted), y=Predicted)) + 
+#   stat_boxplot(geom ='errorbar', width = 0.6) +
+#   geom_boxplot(fill = 'grey', width = 0.6) +
+#   #geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.1, data = WinterRain.df.R)+
+#   ylim(0,1)+ theme_minimal()+
+#   labs(x = NULL,y = "R")+
+#   theme(
+#     axis.title.x = element_text(size = 15),
+#     axis.title.y = element_text(size = 15),
+#     axis.text.x = element_text(size = 13),
+#     axis.text.y = element_text(size = 13)) 
+# p1.PEFAState.R
+
+
+
+
 ## plot Area Type vs psi
 p1.Core.psi <- ggplot(WinterRain_Core_PEFA.df.psi, aes(Core, Predicted)) + 
   stat_boxplot(geom ='errorbar', width = 0.6) +

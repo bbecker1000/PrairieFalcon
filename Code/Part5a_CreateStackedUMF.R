@@ -123,3 +123,4 @@ umf_stacked <- unmarkedFrameOccuMS(y=PRFADetectHistory_2022_stacked[,-c(1,2)],
                                   siteCovs=site_cov_df_stacked,
                                   obsCovs=obs_cov_df_stacked)
 summary(umf_stacked)
+
