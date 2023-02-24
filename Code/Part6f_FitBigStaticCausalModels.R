@@ -527,7 +527,7 @@ modBig27_stacked_CAUSAL
 ### Set Formulas 
 # State Params
 modBig28_stacked_CAUSAL_psiformulas <- c(
-  '~BreedingYear + PEFA + AreaType*AnnualVisitors + DecToFebPrecipitation',
+  '~BreedingYear + PEFAState + AreaType*AnnualVisitors + DecToFebPrecipitation',
   '~PEFA + AreaType*AnnualVisitors + DecToFebPrecipitation + HeavyRain + HDD + HotDays') #siteCovs on psi and R
 
 # Detection probability
