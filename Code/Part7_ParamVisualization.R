@@ -250,7 +250,7 @@ psi <- ggplot(AnnualAvgPredicted_condbinom.psi.R, aes(x= YearDate, y = meanPsi, 
   geom_line(aes(linetype=AreaType), position=position_dodge(width=150)) +
   geom_pointrange(aes(ymin=meanPsiCI.lower, ymax=meanPsiCI.upper), position=position_dodge(width=150), size = 0.65) +
   scale_x_date(breaks = scales::breaks_pretty(10))+
-  labs( x="Year", y = "psi")+
+  labs( x="Year", y = expression(Psi)) +
   ylim(0,1)+
   scale_shape_manual(values=c(15, 17))+
   scale_color_manual(values=c('#E69F00','#999999')) + 
@@ -298,7 +298,7 @@ R <- ggplot(AnnualAvgPredicted_condbinom.psi.R, aes(x= YearDate, y = meanR),
         axis.text.y = element_text(size = 12),
         legend.position = c(0.8, 0.9),
         legend.title=element_blank(),
-        legend.text=element_text(size=11)) 
+        legend.text=element_text(size=14)) 
 R 
 
 ##### Plot psi2 predictions with Winter Precipitation by Year - multinomial #####
@@ -412,7 +412,7 @@ p1.PEFAState.Psi <- ggplot(WinterRain_Core_PEFA.df.psi, aes(x=reorder(PEFAState,
   geom_jitter(color="black", size=1, alpha=0.5)+
   #geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.1, data = WinterRain.df.R)+
   ylim(0,1)+ 
-  labs(x = NULL,y = "psi")+
+  labs(x = NULL,y = expression(Psi))+
   scale_x_discrete(labels=c("PEFA State 0","PEFA State 1","PEFA State 2")) +
   theme_classic(base_size = 20) +
   theme(plot.margin = unit(c(2,3,2,3), "lines"),
@@ -422,11 +422,28 @@ p1.PEFAState.Psi <- ggplot(WinterRain_Core_PEFA.df.psi, aes(x=reorder(PEFAState,
         axis.text.y = element_text(size = 13)) 
 p1.PEFAState.Psi
 
+# # plot PEFAState vs R
+# p1.PEFAState.R <- ggplot(WinterRain_Core_PEFA.df.R, aes(x=reorder(PEFAState,-Predicted), y=Predicted)) + 
+#   stat_boxplot(geom ='errorbar', width = 0.6) +
+#   geom_boxplot(fill = 'grey', width = 0.6) +
+#   #geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.1, data = WinterRain.df.R)+
+#   ylim(0,1)+ theme_minimal()+
+#   labs(x = NULL,y = "R")+
+#   theme(
+#     axis.title.x = element_text(size = 15),
+#     axis.title.y = element_text(size = 15),
+#     axis.text.x = element_text(size = 13),
+#     axis.text.y = element_text(size = 13)) 
+# p1.PEFAState.R
+
+
+
+
 ## plot Area Type vs psi
 p1.Core.psi <- ggplot(WinterRain_Core_PEFA.df.psi, aes(Core, Predicted)) + 
   stat_boxplot(geom ='errorbar', width = 0.6) +
   geom_boxplot(fill = 'grey', width = 0.6) +
-  xlab("Area Type")+ylab("Psi") +
+  xlab("Area Type")+ylab(expression(Psi)) +
   #geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.1, data = WinterRain.df.R)+
   ylim(0,1)+ theme_minimal()+
   theme(plot.margin = unit(c(2,3,2,3), "lines"),
@@ -536,7 +553,7 @@ p.occ.territories <- ggplot(BEST_MODEL_state_params.sum_plot, aes(x= YearDate, y
                 position = position_dodge(.5)) +
   scale_x_date(breaks = scales::breaks_pretty(10))+
   scale_y_continuous(breaks = scales::breaks_pretty(10))+  
-  labs(x="Year", y = "Occupied Territories")+
+  labs(x="Year", y = expression(paste("Total Occupied ( ", psi, ") Territories")))+
   ylim(0,30)+
   scale_shape_manual(values=c(15, 17))+
   scale_linetype_manual(values  = c("solid", "dashed"))+
@@ -545,11 +562,11 @@ p.occ.territories <- ggplot(BEST_MODEL_state_params.sum_plot, aes(x= YearDate, y
   theme(
     plot.title = element_text(size = 13, face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = 10, hjust = 0.5),
-    axis.title.x = element_text(size = 12),
-    axis.title.y = element_text(size = 12),
-    axis.text.x = element_text(size = 10),
-    axis.text.y = element_text(size = 10)) 
-
+    axis.title.x = element_text(size = 13),
+    axis.title.y = element_text(size = 13),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12)) 
+p.occ.territories
 
 p.repr.territories <- ggplot(BEST_MODEL_state_params.sum_plot, aes(x= YearDate, y = psi.predicted*Territories*R.predicted))+
   geom_line()+
@@ -558,7 +575,7 @@ p.repr.territories <- ggplot(BEST_MODEL_state_params.sum_plot, aes(x= YearDate, 
                 position = position_dodge(.5)) +
   scale_x_date(breaks = scales::breaks_pretty(10))+
   scale_y_continuous(breaks = scales::breaks_pretty(10))+  
-  labs(x="Year", y = "Reproductive Territories")+
+  labs(x="Year", y = expression(paste("Total Reproductive  ", italic("(R)"), " Territories")))+
   ylim(0,30)+
   scale_shape_manual(values=c(15, 17))+
   scale_linetype_manual(values  = c("solid", "dashed"))+
@@ -567,14 +584,19 @@ p.repr.territories <- ggplot(BEST_MODEL_state_params.sum_plot, aes(x= YearDate, 
   theme(
     plot.title = element_text(size = 13, face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = 10, hjust = 0.5),
-    axis.title.x = element_text(size = 12),
-    axis.title.y = element_text(size = 12),
-    axis.text.x = element_text(size = 10),
-    axis.text.y = element_text(size = 10)) 
-
+    axis.title.x = element_text(size = 13),
+    axis.title.y = element_text(size = 13),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12)) 
+p.repr.territories
 library(cowplot)
 plot_grid(p.occ.territories, p.repr.territories)
 
-plot_grid(psi, R, p1.PEFAState.Psi, p1.WinterRain.R, p.occ.territories, p.repr.territories,
-          ncol = 2)
+fig3 <- plot_grid(p1.PEFAState.Psi, p1.WinterRain.R, psi, R, p.occ.territories, p.repr.territories,
+          ncol = 2, labels = "AUTO",
+          scale = c(1,1,1,1,1,1))#0.78, 0.78))
+## need to fix scaling on panels E and F
+
+fig3
+ggsave("Output/Fig3.png", width = 12, height = 12, units = "in", dpi = 300)
 
