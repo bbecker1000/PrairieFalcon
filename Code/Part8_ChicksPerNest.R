@@ -4,7 +4,7 @@ library(tidyverse)
 library(tidyr)
 
 ChicksPerNest <- read_csv('Data/ChickPerNest.csv') 
-View(ChicksPerNest)
+#View(ChicksPerNest)
 
 unique (ChicksPerNest$Variable)
 ChicksPerNest <- ChicksPerNest %>% filter(Variable != "PEFAChicksPerNest")
@@ -21,10 +21,10 @@ p.fledge <- ggplot(ChicksPerNest, aes(Year, Value,
   theme(legend.position = "none") +
   geom_text(x=2016, y=1.75, label="Nesting PEFA Pairs", 
             #color = "#F8766D", 
-            size = 6) +
+            size = 5) +
   geom_text(x=2017, y=5, label="Mean(SD) PRFA \nfledges per nest", 
             #color = "#00BFC4", 
-            size = 6) +
+            size = 5) +
   scale_y_continuous(limits = c(0, 5.5), breaks = c(seq(0,5,by = 1))) + 
   scale_x_continuous(limits = c(2006.5, 2021.1), breaks = c(seq(2008,2020,by = 2))) 
   
@@ -35,7 +35,7 @@ p.fledge
 t1 <- ChicksPerNest %>% select(-SD) %>%
   pivot_wider(names_from = Variable, values_from = Value) 
    
-with(t1, cor.test(NestingPEFAPairs, PRFAChicksPerNest))
+with(t1, cor.test(NestingPEFAPairs, PRFAChicksPerNest, method = "spearman"))
 
 with(t1, plot(NestingPEFAPairs, PRFAChicksPerNest))
 
