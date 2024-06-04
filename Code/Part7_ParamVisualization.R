@@ -8,13 +8,14 @@ source("Code/Part6c_FitBigStaticModels.R")
 source("Code/Part6e_FitBigStaticModels_multi.R")
 source("Code/Part6f_FitBigStaticCausalModels.R")
 library(cowplot)
+library(marginaleffects)
+
 
 ##### Prepare predicted data - multinomial #####
 ### Using the best stacked static multinomial model modBig11m_stacked_fit
 # Psi1
 
 # adding BEST_MODEL
-
 
 predicted_psi1 = BEST_MODEL_psi_predict$`psi` # changed to BEST_MODEL  if multi the psi[1] or use psi for condbinom
 predicted_psi1 = predicted_psi1 %>% 
@@ -380,7 +381,8 @@ WinterRain_Core_PEFA.df.R$PEFA <- ifelse(WinterRain_Core_PEFA.df.R$PEFA == "0", 
 
 ## plot Winter Rain vs R
 p1.WinterRain.R <- ggplot(WinterRain_Core_PEFA.df.R, aes(WinterRain, Predicted)) + 
-  geom_smooth(method = "loess") + 
+  geom_smooth(method = "lm", level = 0.99999) +
+  #geom_smooth(method = "loess") + 
   geom_jitter() +
   xlab("Winter Rainfall") + ylab("R") +
   #geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.1, data = WinterRain.df.R)+
@@ -603,7 +605,7 @@ p.repr.territories
 library(cowplot)
 plot_grid(p.occ.territories, p.repr.territories)
 
-fig3 <- plot_grid(p1.PEFAState.Psi, p1.WinterRain.R, psi, R, p.occ.territories, p.repr.territories,
+fig3 <- plot_grid(psi, R, p1.PEFAState.Psi, p1.WinterRain.R, p.occ.territories, p.repr.territories,
           ncol = 2, labels = "AUTO",
           scale = c(1,1,1,1,1,1),
           axis = "r")

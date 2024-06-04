@@ -646,7 +646,9 @@ modBig28_stacked_CAUSAL
 
 
 #cond_binom
-BEST_MODEL <- modBig28_stacked_CAUSAL
+#BEST_MODEL <- modBig28_stacked_CAUSAL
+
+BEST_MODEL <- modBig27_stacked_CAUSAL
 
 summary(BEST_MODEL)
 BEST_MODEL_psi_predict = predict(BEST_MODEL, type = "psi") # est. for psi1 and psi2 (i.e. R)
